@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Airport</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game">
+    <!-- Question bar -->
+    <div id="question-bar" class="hidden">
+      <span id="round-counter"></span>
+      <span id="question-text"></span>
+    </div>
+
+    <!-- SVG map container -->
+    <svg id="map" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
+      <g id="border-layer"></g>
+      <g id="airport-layer"></g>
+      <g id="feedback-layer"></g>
+    </svg>
+
+    <!-- Score sidebar -->
+    <div id="sidebar" class="hidden">
+      <h2>Score Sheet</h2>
+      <ul id="score-list"></ul>
+      <div id="score-total"></div>
+    </div>
+
+    <!-- Start screen overlay -->
+    <div id="start-screen">
+      <h1>Guess the Airport</h1>
+      <p>Identify Czech airports on a blind VFR map</p>
+      <div id="custom-checks">
+        <label><input type="checkbox" value="large" checked> Large (international)</label>
+        <label><input type="checkbox" value="medium" checked> Medium (controlled)</label>
+        <label><input type="checkbox" value="small-north"> Small — North Bohemia</label>
+        <label><input type="checkbox" value="small-west"> Small — West Bohemia</label>
+        <label><input type="checkbox" value="small-south"> Small — South Bohemia</label>
+        <label><input type="checkbox" value="small-east"> Small — Moravia &amp; Silesia</label>
+        <label><input type="checkbox" value="ultralight"> Ultralight (SLZ)</label>
+        <label><input type="checkbox" value="vor"> VOR navaids</label>
+        <label><input type="checkbox" value="prohibited"> Prohibited areas (LKP)</label>
+        <label><input type="checkbox" value="restricted"> Restricted areas (LKR)</label>
+      </div>
+      <div id="modifiers">
+        <label><input type="checkbox" id="learning-mode"> Learning mode (show all labels)</label>
+      </div>
+      <button class="diff-btn" id="start-btn">Start</button>
+    </div>
+
+    <!-- Summary overlay -->
+    <div id="summary-screen" class="hidden">
+      <h1>Round Complete</h1>
+      <p id="final-score"></p>
+      <ul id="summary-list"></ul>
+      <button id="play-again">Play Again</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
