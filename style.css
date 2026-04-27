@@ -119,12 +119,6 @@ body {
 
 }
 
-@media (max-height: 700px) {
-  #scout-logo {
-    width: 60px;
-  }
-}
-
 #sidebar h2 {
   font-size: 15px;
   margin-bottom: 12px;
