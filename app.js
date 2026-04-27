@@ -323,6 +323,57 @@ function shuffleArray(arr) {
   return a;
 }
 
+// --- Adaptive Weights ---
+
+let weights = {};   // icao -> weight (only stores != 1)
+let seen = new Set(); // icaos the player has encountered
+
+function loadWeights() {
+  weights = JSON.parse(localStorage.getItem('guessAirport_weights') || '{}');
+  seen = new Set(JSON.parse(localStorage.getItem('guessAirport_seen') || '[]'));
+}
+
+function saveWeights() {
+  localStorage.setItem('guessAirport_weights', JSON.stringify(weights));
+  localStorage.setItem('guessAirport_seen', JSON.stringify([...seen]));
+}
+
+function getWeight(icao) {
+  if (weights[icao]) return weights[icao];
+  return seen.has(icao) ? 1 : 2; // unseen = 2, seen+correct = 1
+}
+
+function updateWeight(icao, correct) {
+  seen.add(icao);
+  const current = weights[icao] || 1;
+  if (correct) {
+    const newW = Math.max(1, Math.round(current / 2));
+    if (newW === 1) delete weights[icao];
+    else weights[icao] = newW;
+  } else {
+    weights[icao] = current * 2;
+  }
+  saveWeights();
+}
+
+function weightedPick(pool, count) {
+  // Build weighted array, pick without replacement
+  const items = pool.map(a => ({ airport: a, weight: getWeight(a.icao) }));
+  const picked = [];
+  for (let n = 0; n < count && items.length > 0; n++) {
+    const totalWeight = items.reduce((sum, it) => sum + it.weight, 0);
+    let r = Math.random() * totalWeight;
+    let idx = 0;
+    for (let i = 0; i < items.length; i++) {
+      r -= items[i].weight;
+      if (r <= 0) { idx = i; break; }
+    }
+    picked.push(items[idx].airport);
+    items.splice(idx, 1);
+  }
+  return picked;
+}
+
 function startGame() {
   const checked = [...document.querySelectorAll('#custom-checks input:checked')].map(cb => cb.value);
   if (checked.length === 0) return;
@@ -336,7 +387,7 @@ function startGame() {
 
   currentPool = airportData.filter(a => checked.includes(a.type));
   const roundCount = infinityMode ? currentPool.length : Math.min(ROUNDS_PER_GAME, currentPool.length);
-  roundAirports = shuffleArray(currentPool).slice(0, roundCount);
+  roundAirports = infinityMode ? shuffleArray(currentPool) : weightedPick(currentPool, roundCount);
   currentRound = 0;
   results = [];
   gameState = 'playing';
@@ -483,6 +534,7 @@ function handleMapClick(e) {
 
   const correct = clickedAirport.icao === targetAirport.icao;
   results.push({ airport: targetAirport, correct });
+  updateWeight(targetAirport.icao, correct);
 
   renderScoreSheet();
   showFeedback(targetAirport, correct, clickedAirport);
@@ -548,6 +600,7 @@ async function init() {
       '<h1>Failed to load game data</h1><p>Please run via a local HTTP server (e.g. python3 -m http.server)</p>';
     return;
   }
+  loadWeights();
   renderBorder(borderData);
   renderAirports(airportData);
 
