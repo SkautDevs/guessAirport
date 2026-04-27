@@ -244,7 +244,7 @@ input[type="checkbox"] {
   width: 240px;
   height: auto;
   opacity: 1;
-  z-index: 5;
+  z-index: 25;
   border-radius: 4px;
 }
 
