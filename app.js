@@ -569,6 +569,15 @@ function showSummary() {
     list.appendChild(li);
   });
 
+  const missed = results.filter(r => !r.correct).map(r => r.airport);
+  const practiceBtn = document.getElementById('practice-missed');
+  if (hintMode && missed.length > 0) {
+    practiceBtn.classList.remove('hidden');
+    practiceBtn.textContent = `Practice ${missed.length} missed`;
+  } else {
+    practiceBtn.classList.add('hidden');
+  }
+
   document.getElementById('summary-screen').classList.remove('hidden');
 }
 
@@ -629,6 +638,18 @@ async function init() {
     document.getElementById('summary-screen').classList.add('hidden');
     document.getElementById('start-screen').classList.remove('hidden');
     document.getElementById('sidebar').classList.add('hidden');
+  });
+
+  document.getElementById('practice-missed').addEventListener('click', () => {
+    const missed = results.filter(r => !r.correct).map(r => r.airport);
+    document.getElementById('summary-screen').classList.add('hidden');
+    document.getElementById('question-bar').classList.remove('hidden');
+    roundAirports = shuffleArray(missed);
+    currentRound = 0;
+    results = [];
+    gameState = 'playing';
+    renderScoreSheet();
+    showCurrentQuestion();
   });
 }
 
