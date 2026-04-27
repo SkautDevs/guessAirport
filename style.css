@@ -243,14 +243,9 @@ input[type="checkbox"] {
   left: 12px;
   width: 240px;
   height: auto;
-  opacity: 0.5;
+  opacity: 1;
   z-index: 5;
   border-radius: 4px;
-  transition: opacity 0.3s;
-}
-
-#scout-logo:hover {
-  opacity: 1;
 }
 
 #easter-egg {
