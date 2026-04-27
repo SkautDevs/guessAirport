@@ -427,9 +427,8 @@ function showFeedback(targetAirport, correct, clickedAirport) {
   const feedbackLayer = document.getElementById('feedback-layer');
   feedbackLayer.innerHTML = '';
 
-  if (targetAirport.icao === 'LKMB' || clickedAirport?.icao === 'LKMB') showEasterEgg();
-
   if (correct) {
+    if (targetAirport.icao === 'LKMB') showEasterEgg();
     highlightAirport(feedbackLayer, targetAirport, COLORS.correct, 3);
   } else {
     if (clickedAirport) {
