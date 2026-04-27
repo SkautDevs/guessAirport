@@ -311,7 +311,6 @@ let currentRound = 0;
 let currentPool = [];
 let roundAirports = [];
 let browseMode = false;
-let hintMode = false;
 let results = [];
 
 function shuffleArray(arr) {
@@ -378,11 +377,10 @@ function startGame() {
   const checked = [...document.querySelectorAll('#custom-checks input:checked')].map(cb => cb.value);
   if (checked.length === 0) return;
   browseMode = document.getElementById('browse-mode').checked;
-  hintMode = document.getElementById('learning-mode').checked;
   const infinityMode = document.getElementById('infinity-mode').checked;
 
   localStorage.setItem('guessAirport_settings', JSON.stringify({
-    categories: checked, browse: browseMode, hint: hintMode, infinity: infinityMode
+    categories: checked, browse: browseMode, infinity: infinityMode
   }));
 
   currentPool = airportData.filter(a => checked.includes(a.type));
@@ -403,30 +401,12 @@ function startGame() {
   showCurrentQuestion();
 }
 
-const HINT_DURATION_MS = 2500;
-
 function showCurrentQuestion() {
   const airport = roundAirports[currentRound];
   document.getElementById('round-counter').textContent = `Round ${currentRound + 1}/${roundAirports.length}`;
 
-  if (hintMode) {
-    gameState = 'hint';
-    document.getElementById('question-text').innerHTML =
-      `Remember: <span class="icao">${airport.icao}</span> — ${airport.name}`;
-    const feedbackLayer = document.getElementById('feedback-layer');
-    feedbackLayer.innerHTML = '';
-    highlightAirport(feedbackLayer, airport, COLORS.correct, 3);
-    labelAirport(feedbackLayer, airport, COLORS.correct);
-    setTimeout(() => {
-      feedbackLayer.innerHTML = '';
-      gameState = 'playing';
-      document.getElementById('question-text').innerHTML =
-        `Find: <span class="icao">${airport.icao}</span> — ${airport.name}`;
-    }, HINT_DURATION_MS);
-  } else {
-    document.getElementById('question-text').innerHTML =
-      `Find: <span class="icao">${airport.icao}</span> — ${airport.name}`;
-  }
+  document.getElementById('question-text').innerHTML =
+    `Find: <span class="icao">${airport.icao}</span> — ${airport.name}`;
 }
 
 // --- Score Sheet ---
@@ -571,7 +551,7 @@ function showSummary() {
 
   const missed = results.filter(r => !r.correct).map(r => r.airport);
   const practiceBtn = document.getElementById('practice-missed');
-  if (hintMode && missed.length > 0) {
+  if (missed.length > 0) {
     practiceBtn.classList.remove('hidden');
     practiceBtn.textContent = `Practice ${missed.length} missed`;
   } else {
@@ -620,7 +600,6 @@ async function init() {
       cb.checked = saved.categories?.includes(cb.value) ?? false;
     });
     document.getElementById('browse-mode').checked = saved.browse ?? false;
-    document.getElementById('learning-mode').checked = saved.hint ?? false;
     document.getElementById('infinity-mode').checked = saved.infinity ?? false;
   }
 
