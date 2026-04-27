@@ -405,6 +405,7 @@ let currentRound = 0;
 let currentPool = [];
 let roundAirports = [];
 let browseMode = false;
+let hardMode = false;
 let results = [];
 
 function shuffleArray(arr) {
@@ -471,10 +472,11 @@ function startGame() {
   const checked = [...document.querySelectorAll('#custom-checks input:checked')].map(cb => cb.value);
   if (checked.length === 0) return;
   browseMode = DOM['browse-mode'].checked;
+  hardMode = DOM['hard-mode'].checked;
   const infinityMode = DOM['infinity-mode'].checked;
 
   localStorage.setItem('guessAirport_settings', JSON.stringify({
-    categories: checked, browse: browseMode, infinity: infinityMode
+    categories: checked, browse: browseMode, hard: hardMode, infinity: infinityMode
   }));
 
   currentPool = airportData.filter(a => checked.includes(a.type));
@@ -499,8 +501,9 @@ function showCurrentQuestion() {
   const airport = roundAirports[currentRound];
   DOM['round-counter'].textContent = `Kolo ${currentRound + 1}/${roundAirports.length}`;
 
-  DOM['question-text'].innerHTML =
-    `Najdi: <span class="icao">${airport.icao}</span> — ${airport.name}`;
+  DOM['question-text'].innerHTML = hardMode
+    ? `Najdi: <span class="icao">${airport.icao}</span>`
+    : `Najdi: <span class="icao">${airport.icao}</span> — ${airport.name}`;
 }
 
 // --- Score Sheet ---
@@ -691,7 +694,7 @@ async function init() {
    'sidebar', 'sidebar-toggle', 'score-list', 'score-total',
    'start-screen', 'summary-screen', 'final-score', 'summary-list',
    'practice-missed', 'play-again', 'start-btn', 'reset-progress',
-   'reset-zoom', 'easter-egg', 'browse-mode', 'infinity-mode'
+   'reset-zoom', 'easter-egg', 'browse-mode', 'hard-mode', 'infinity-mode'
   ].forEach(id => { DOM[id] = document.getElementById(id); });
 
   try {
@@ -714,6 +717,7 @@ async function init() {
       cb.checked = saved.categories?.includes(cb.value) ?? false;
     });
     DOM['browse-mode'].checked = saved.browse ?? false;
+    DOM['hard-mode'].checked = saved.hard ?? false;
     DOM['infinity-mode'].checked = saved.infinity ?? false;
   }
 
