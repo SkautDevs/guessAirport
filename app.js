@@ -324,8 +324,9 @@ function startGame() {
   const checked = [...document.querySelectorAll('#custom-checks input:checked')].map(cb => cb.value);
   if (checked.length === 0) return;
   learningMode = document.getElementById('learning-mode').checked;
+  const infinityMode = document.getElementById('infinity-mode').checked;
   currentPool = airportData.filter(a => checked.includes(a.type));
-  const roundCount = Math.min(ROUNDS_PER_GAME, currentPool.length);
+  const roundCount = infinityMode ? currentPool.length : Math.min(ROUNDS_PER_GAME, currentPool.length);
   roundAirports = shuffleArray(currentPool).slice(0, roundCount);
   currentRound = 0;
   results = [];
