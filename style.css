@@ -289,7 +289,7 @@ input[type="checkbox"] {
   position: fixed;
   bottom: 12px;
   left: 12px;
-  width: min(240px, 15vw);
+  width: min(240px, 30vw);
   height: auto;
   opacity: 1;
   z-index: 25;
