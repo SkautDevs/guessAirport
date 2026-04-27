@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guess the Airport</title>
+  <title>Poznej letiště</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,45 +22,45 @@
     </svg>
 
     <!-- Score sidebar -->
-    <button id="sidebar-toggle">Score ▶</button>
+    <button id="sidebar-toggle">Skóre ▶</button>
     <div id="sidebar" class="hidden">
-      <h2>Score Sheet</h2>
+      <h2>Výsledky</h2>
       <ul id="score-list"></ul>
       <div id="score-total"></div>
     </div>
 
     <!-- Start screen overlay -->
     <div id="start-screen">
-      <h1>Guess the Airport</h1>
-      <p>Identify Czech airports on a blind VFR map</p>
+      <h1>Poznej letiště</h1>
+      <p>Najdi správné letiště na slepé mapě</p>
       <div id="custom-checks">
-        <label><input type="checkbox" value="large" checked> Large (international)</label>
-        <label><input type="checkbox" value="medium" checked> Medium (controlled)</label>
-        <label><input type="checkbox" value="small-north"> Small — North Bohemia</label>
-        <label><input type="checkbox" value="small-west"> Small — West Bohemia</label>
-        <label><input type="checkbox" value="small-south"> Small — South Bohemia</label>
-        <label><input type="checkbox" value="small-east"> Small — Moravia &amp; Silesia</label>
-        <label><input type="checkbox" value="ultralight"> Ultralight (SLZ)</label>
-        <label><input type="checkbox" value="vor"> VOR navaids</label>
-        <label><input type="checkbox" value="prohibited"> Prohibited areas (LKP)</label>
-        <label><input type="checkbox" value="restricted"> Restricted areas (LKR)</label>
-        <label><input type="checkbox" value="tra"> Military training areas (LKTRA)</label>
+        <label><input type="checkbox" value="large" checked> Velká (mezinárodní)</label>
+        <label><input type="checkbox" value="medium" checked> Střední (řízená)</label>
+        <label><input type="checkbox" value="small-north"> Malá — severní Čechy</label>
+        <label><input type="checkbox" value="small-west"> Malá — západní Čechy</label>
+        <label><input type="checkbox" value="small-south"> Malá — jižní Čechy</label>
+        <label><input type="checkbox" value="small-east"> Malá — Morava a Slezsko</label>
+        <label><input type="checkbox" value="ultralight"> Ultralehká (SLZ)</label>
+        <label><input type="checkbox" value="vor"> Radionavigační body (VOR)</label>
+        <label><input type="checkbox" value="prohibited"> Zakázané prostory (LKP)</label>
+        <label><input type="checkbox" value="restricted"> Omezené prostory (LKR)</label>
+        <label><input type="checkbox" value="tra"> Vojenské prostory (LKTRA)</label>
       </div>
       <div id="modifiers">
-        <label><input type="checkbox" id="browse-mode"> Browse (show labels)</label>
-        <label><input type="checkbox" id="infinity-mode"> Infinity mode (all airports, not just 10)</label>
+        <label><input type="checkbox" id="browse-mode"> Procházení (zobrazit názvy)</label>
+        <label><input type="checkbox" id="infinity-mode"> Nekonečný režim (všechna letiště)</label>
       </div>
-      <button class="diff-btn" id="start-btn">Start</button>
-      <a href="#" id="reset-progress">Reset progress</a>
+      <button class="diff-btn" id="start-btn">Hrát</button>
+      <a href="#" id="reset-progress">Smazat postup</a>
     </div>
 
     <!-- Summary overlay -->
     <div id="summary-screen" class="hidden">
-      <h1>Round Complete</h1>
+      <h1>Kolo dokončeno</h1>
       <p id="final-score"></p>
       <ul id="summary-list"></ul>
-      <button id="practice-missed" class="diff-btn hidden">Practice missed</button>
-      <button id="play-again">Play Again</button>
+      <button id="practice-missed" class="diff-btn hidden">Procvičit chybné</button>
+      <button id="play-again">Hrát znovu</button>
     </div>
   </div>
 

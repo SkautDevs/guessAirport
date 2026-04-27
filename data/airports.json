@@ -1,7 +1,7 @@
 [
   {
     "icao": "LKCS",
-    "name": "České Budějovice South Bohemian Airport",
+    "name": "České Budějovice",
     "lat": 48.9482,
     "lon": 14.4283,
     "type": "large",
@@ -56,7 +56,7 @@
   },
   {
     "icao": "LKKV",
-    "name": "Karlovy Vary Airport",
+    "name": "Karlovy Vary",
     "lat": 50.203,
     "lon": 12.915,
     "type": "large",
@@ -103,7 +103,7 @@
   },
   {
     "icao": "LKMT",
-    "name": "Leoš Janáček Airport Ostrava",
+    "name": "Ostrava-Mošnov",
     "lat": 49.6963,
     "lon": 18.1111,
     "type": "large",
@@ -302,7 +302,7 @@
   },
   {
     "icao": "LKPD",
-    "name": "Pardubice Airport",
+    "name": "Pardubice",
     "lat": 50.015,
     "lon": 15.7398,
     "type": "large",
@@ -349,7 +349,7 @@
   },
   {
     "icao": "LKPR",
-    "name": "Václav Havel Airport Prague",
+    "name": "Praha-Ruzyně",
     "lat": 50.1009,
     "lon": 14.2599,
     "type": "large",
@@ -748,7 +748,7 @@
   },
   {
     "icao": "CZ-0244",
-    "name": "Kostomlaty Airstrip",
+    "name": "Kostomlaty",
     "lat": 50.2084,
     "lon": 14.9259,
     "type": "ultralight",
@@ -762,7 +762,7 @@
   },
   {
     "icao": "LKCV",
-    "name": "Čáslav Air Base",
+    "name": "Čáslav",
     "lat": 49.9397,
     "lon": 15.3818,
     "type": "medium",
@@ -837,7 +837,7 @@
   },
   {
     "icao": "LKKB",
-    "name": "Prague–Kbely Air Base",
+    "name": "Praha-Kbely",
     "lat": 50.1214,
     "lon": 14.5436,
     "type": "medium",
@@ -908,7 +908,7 @@
   },
   {
     "icao": "LKKU",
-    "name": "Kunovice Airport",
+    "name": "Kunovice",
     "lat": 49.0294,
     "lon": 17.4397,
     "type": "medium",
@@ -1143,7 +1143,7 @@
   },
   {
     "icao": "LKLN",
-    "name": "Plzeň-Líně Airport",
+    "name": "Plzeň-Líně",
     "lat": 49.6752,
     "lon": 13.2746,
     "type": "small-west",
@@ -1161,7 +1161,7 @@
   },
   {
     "icao": "LKNA",
-    "name": "Náměšť Air Base",
+    "name": "Náměšť nad Oslavou",
     "lat": 49.1663,
     "lon": 16.124,
     "type": "medium",
@@ -1224,7 +1224,7 @@
   },
   {
     "icao": "LKPO",
-    "name": "Přerov Air Base",
+    "name": "Přerov",
     "lat": 49.4258,
     "lon": 17.4047,
     "type": "small-east",
@@ -1242,7 +1242,7 @@
   },
   {
     "icao": "LKTB",
-    "name": "Brno-Tuřany Airport",
+    "name": "Brno-Tuřany",
     "lat": 49.1513,
     "lon": 16.694,
     "type": "large",
@@ -1445,7 +1445,7 @@
   },
   {
     "icao": "LKVO",
-    "name": "Vodochody Airport",
+    "name": "Vodochody",
     "lat": 50.2166,
     "lon": 14.3958,
     "type": "medium",
@@ -1492,7 +1492,7 @@
   },
   {
     "icao": "LKBA",
-    "name": "Břeclav Airfield",
+    "name": "Břeclav",
     "lat": 48.7904,
     "lon": 16.8925,
     "type": "small-east",
@@ -1510,7 +1510,7 @@
   },
   {
     "icao": "LKBE",
-    "name": "Benešov Airfield",
+    "name": "Benešov",
     "lat": 49.7408,
     "lon": 14.6447,
     "type": "small-south",
@@ -1544,7 +1544,7 @@
   },
   {
     "icao": "LKBO",
-    "name": "Bohuňovice Airfield",
+    "name": "Bohuňovice",
     "lat": 49.6706,
     "lon": 17.295,
     "type": "small-east",
@@ -1562,7 +1562,7 @@
   },
   {
     "icao": "LKBR",
-    "name": "Broumov Airfield",
+    "name": "Broumov",
     "lat": 50.5619,
     "lon": 16.3428,
     "type": "small-north",
@@ -1580,7 +1580,7 @@
   },
   {
     "icao": "LKBU",
-    "name": "Bubovice Airfield",
+    "name": "Bubovice",
     "lat": 49.9744,
     "lon": 14.1781,
     "type": "small-west",
@@ -1606,7 +1606,7 @@
   },
   {
     "icao": "LKCB",
-    "name": "Cheb Airfield",
+    "name": "Cheb",
     "lat": 50.0661,
     "lon": 12.4117,
     "type": "small-west",
@@ -1632,7 +1632,7 @@
   },
   {
     "icao": "LKCE",
-    "name": "Česká Lípa Airfield",
+    "name": "Česká Lípa",
     "lat": 50.7094,
     "lon": 14.5667,
     "type": "small-north",
@@ -1650,7 +1650,7 @@
   },
   {
     "icao": "LKCH",
-    "name": "Chomutov Airfield",
+    "name": "Chomutov",
     "lat": 50.4689,
     "lon": 13.4681,
     "type": "small-west",
@@ -1676,7 +1676,7 @@
   },
   {
     "icao": "LKCM",
-    "name": "Medlánky Airfield",
+    "name": "Medlánky",
     "lat": 49.2367,
     "lon": 16.555,
     "type": "small-east",
@@ -1694,7 +1694,7 @@
   },
   {
     "icao": "LKCR",
-    "name": "Chrudim Airfield",
+    "name": "Chrudim",
     "lat": 49.9364,
     "lon": 15.7806,
     "type": "small-south",
@@ -1712,7 +1712,7 @@
   },
   {
     "icao": "LKCT",
-    "name": "Chotěboř Airfield",
+    "name": "Chotěboř",
     "lat": 49.6858,
     "lon": 15.6761,
     "type": "small-south",
@@ -1730,7 +1730,7 @@
   },
   {
     "icao": "LKDK",
-    "name": "Dvůr Králové nad Labem Airfield",
+    "name": "Dvůr Králové nad Labem",
     "lat": 50.4142,
     "lon": 15.8369,
     "type": "small-north",
@@ -1748,7 +1748,7 @@
   },
   {
     "icao": "LKER",
-    "name": "Erpužice Airfield",
+    "name": "Erpužice",
     "lat": 49.8028,
     "lon": 13.0381,
     "type": "small-west",
@@ -1766,7 +1766,7 @@
   },
   {
     "icao": "LKFR",
-    "name": "Frýdlant Airfield",
+    "name": "Frýdlant",
     "lat": 49.5894,
     "lon": 18.3792,
     "type": "small-east",
@@ -1784,7 +1784,7 @@
   },
   {
     "icao": "LKHB",
-    "name": "Havlíčkův Brod Airfield",
+    "name": "Havlíčkův Brod",
     "lat": 49.5972,
     "lon": 15.5492,
     "type": "small-south",
@@ -1802,7 +1802,7 @@
   },
   {
     "icao": "LKHC",
-    "name": "Hořice Airfield",
+    "name": "Hořice",
     "lat": 50.3576,
     "lon": 15.577,
     "type": "small-north",
@@ -1820,7 +1820,7 @@
   },
   {
     "icao": "LKHD",
-    "name": "Hodkovice nad Mohelkou Airfield",
+    "name": "Hodkovice nad Mohelkou",
     "lat": 50.6572,
     "lon": 15.0778,
     "type": "small-north",
@@ -1838,7 +1838,7 @@
   },
   {
     "icao": "LKHK",
-    "name": "Hradec Králové Airport",
+    "name": "Hradec Králové",
     "lat": 50.2532,
     "lon": 15.8452,
     "type": "small-north",
@@ -1864,7 +1864,7 @@
   },
   {
     "icao": "LKHN",
-    "name": "Hranice Airfield",
+    "name": "Hranice",
     "lat": 49.5461,
     "lon": 17.7044,
     "type": "small-east",
@@ -1882,7 +1882,7 @@
   },
   {
     "icao": "LKHS",
-    "name": "Hosín Airfield",
+    "name": "Hosín",
     "lat": 49.04,
     "lon": 14.495,
     "type": "small-south",
@@ -1908,7 +1908,7 @@
   },
   {
     "icao": "LKHV",
-    "name": "Hořovice Airfield",
+    "name": "Hořovice",
     "lat": 49.8481,
     "lon": 13.8935,
     "type": "small-west",
@@ -1926,7 +1926,7 @@
   },
   {
     "icao": "LKJA",
-    "name": "Jaroměř Airfield",
+    "name": "Jaroměř",
     "lat": 50.3314,
     "lon": 15.9539,
     "type": "small-north",
@@ -1952,7 +1952,7 @@
   },
   {
     "icao": "LKJC",
-    "name": "Jičín Airfield",
+    "name": "Jičín",
     "lat": 50.43,
     "lon": 15.3331,
     "type": "small-north",
@@ -1970,7 +1970,7 @@
   },
   {
     "icao": "LKJH",
-    "name": "Jindřichův Hradec Airfield",
+    "name": "Jindřichův Hradec",
     "lat": 49.1507,
     "lon": 14.9724,
     "type": "small-south",
@@ -1996,7 +1996,7 @@
   },
   {
     "icao": "LKJI",
-    "name": "Jihlava Airfield",
+    "name": "Jihlava",
     "lat": 49.4194,
     "lon": 15.6353,
     "type": "small-south",
@@ -2014,7 +2014,7 @@
   },
   {
     "icao": "LKKA",
-    "name": "Křižanov Airfield",
+    "name": "Křižanov",
     "lat": 49.3683,
     "lon": 16.1161,
     "type": "small-south",
@@ -2032,7 +2032,7 @@
   },
   {
     "icao": "LKKL",
-    "name": "Kladno Airfield",
+    "name": "Kladno",
     "lat": 50.1128,
     "lon": 14.0897,
     "type": "small-north",
@@ -2050,7 +2050,7 @@
   },
   {
     "icao": "LKKM",
-    "name": "Kroměříž Airfield",
+    "name": "Kroměříž",
     "lat": 49.2856,
     "lon": 17.4158,
     "type": "small-east",
@@ -2068,7 +2068,7 @@
   },
   {
     "icao": "LKKO",
-    "name": "Kolín Airfield",
+    "name": "Kolín",
     "lat": 50.0019,
     "lon": 15.1733,
     "type": "small-north",
@@ -2094,7 +2094,7 @@
   },
   {
     "icao": "LKKR",
-    "name": "Krnov Airfield",
+    "name": "Krnov",
     "lat": 50.0744,
     "lon": 17.6952,
     "type": "small-east",
@@ -2112,7 +2112,7 @@
   },
   {
     "icao": "LKKT",
-    "name": "Klatovy Josef Hubáč Airfield",
+    "name": "Klatovy",
     "lat": 49.4183,
     "lon": 13.3219,
     "type": "small-west",
@@ -2138,7 +2138,7 @@
   },
   {
     "icao": "LKKY",
-    "name": "Kyjov Airfield",
+    "name": "Kyjov",
     "lat": 48.98,
     "lon": 17.1247,
     "type": "small-east",
@@ -2156,7 +2156,7 @@
   },
   {
     "icao": "LKLB",
-    "name": "Liberec Airfield",
+    "name": "Liberec",
     "lat": 50.7671,
     "lon": 15.0231,
     "type": "small-north",
@@ -2174,7 +2174,7 @@
   },
   {
     "icao": "LKLT",
-    "name": "Letňany Airfield",
+    "name": "Praha-Letňany",
     "lat": 50.1314,
     "lon": 14.5256,
     "type": "small-north",
@@ -2200,7 +2200,7 @@
   },
   {
     "icao": "LKMB",
-    "name": "Mladá Boleslav Airfield",
+    "name": "Mladá Boleslav",
     "lat": 50.3983,
     "lon": 14.8983,
     "type": "small-north",
@@ -2226,7 +2226,7 @@
   },
   {
     "icao": "LKMH",
-    "name": "Mnichovo Hradiště Airport",
+    "name": "Mnichovo Hradiště",
     "lat": 50.5402,
     "lon": 15.0066,
     "type": "small-north",
@@ -2252,7 +2252,7 @@
   },
   {
     "icao": "LKMI",
-    "name": "Mikulovice Airfield",
+    "name": "Mikulovice",
     "lat": 50.3017,
     "lon": 17.2975,
     "type": "small-east",
@@ -2270,7 +2270,7 @@
   },
   {
     "icao": "LKMK",
-    "name": "Moravská Třebová Airfield",
+    "name": "Moravská Třebová",
     "lat": 49.7983,
     "lon": 16.6878,
     "type": "small-east",
@@ -2296,7 +2296,7 @@
   },
   {
     "icao": "LKMO",
-    "name": "Most Airfield",
+    "name": "Most",
     "lat": 50.525,
     "lon": 13.6831,
     "type": "small-north",
@@ -2322,7 +2322,7 @@
   },
   {
     "icao": "LKNM",
-    "name": "Nové Město nad Metují Airfield",
+    "name": "Nové Město nad Metují",
     "lat": 50.3642,
     "lon": 16.1136,
     "type": "small-north",
@@ -2348,7 +2348,7 @@
   },
   {
     "icao": "LKOL",
-    "name": "Olomouc Airport",
+    "name": "Olomouc",
     "lat": 49.5877,
     "lon": 17.2093,
     "type": "small-east",
@@ -2382,7 +2382,7 @@
   },
   {
     "icao": "LKOT",
-    "name": "Zlín Otrokovice Airfield",
+    "name": "Zlín Otrokovice",
     "lat": 49.1983,
     "lon": 17.5178,
     "type": "small-east",
@@ -2408,7 +2408,7 @@
   },
   {
     "icao": "LKPA",
-    "name": "Polička Airfield",
+    "name": "Polička",
     "lat": 49.7394,
     "lon": 16.2589,
     "type": "small-east",
@@ -2426,7 +2426,7 @@
   },
   {
     "icao": "LKPC",
-    "name": "Panensky Tynec Airfield",
+    "name": "Panenský Týnec",
     "lat": 50.3061,
     "lon": 13.9342,
     "type": "small-north",
@@ -2444,7 +2444,7 @@
   },
   {
     "icao": "LKPI",
-    "name": "Přibyslav Airfield",
+    "name": "Přibyslav",
     "lat": 49.5808,
     "lon": 15.7628,
     "type": "small-south",
@@ -2462,7 +2462,7 @@
   },
   {
     "icao": "LKPJ",
-    "name": "Prostějov Airfield",
+    "name": "Prostějov",
     "lat": 49.4478,
     "lon": 17.1339,
     "type": "small-east",
@@ -2480,7 +2480,7 @@
   },
   {
     "icao": "LKPL",
-    "name": "Letkov Airfield",
+    "name": "Letkov",
     "lat": 49.7231,
     "lon": 13.4522,
     "type": "small-west",
@@ -2498,7 +2498,7 @@
   },
   {
     "icao": "LKPM",
-    "name": "Příbram Airfield",
+    "name": "Příbram",
     "lat": 49.7201,
     "lon": 14.1006,
     "type": "small-west",
@@ -2524,7 +2524,7 @@
   },
   {
     "icao": "LKPN",
-    "name": "Podhořany Airfield",
+    "name": "Podhořany",
     "lat": 49.9392,
     "lon": 15.5497,
     "type": "small-south",
@@ -2550,7 +2550,7 @@
   },
   {
     "icao": "LKPS",
-    "name": "Plasy Rybnice Airfield",
+    "name": "Plasy Rybnice",
     "lat": 49.9203,
     "lon": 13.3769,
     "type": "small-west",
@@ -2568,7 +2568,7 @@
   },
   {
     "icao": "LKRA",
-    "name": "Rana Loumy Airfield",
+    "name": "Raná u Loun",
     "lat": 50.4039,
     "lon": 13.7519,
     "type": "small-north",
@@ -2594,7 +2594,7 @@
   },
   {
     "icao": "LKRK",
-    "name": "Rakovnik Airfield",
+    "name": "Rakovník",
     "lat": 50.0942,
     "lon": 13.6889,
     "type": "small-west",
@@ -2620,7 +2620,7 @@
   },
   {
     "icao": "LKRO",
-    "name": "Roudnice nad Labem Airfield",
+    "name": "Roudnice nad Labem",
     "lat": 50.4102,
     "lon": 14.2271,
     "type": "small-north",
@@ -2646,7 +2646,7 @@
   },
   {
     "icao": "LKRY",
-    "name": "Rokycany Airfield",
+    "name": "Rokycany",
     "lat": 49.7519,
     "lon": 13.5897,
     "type": "small-west",
@@ -2664,7 +2664,7 @@
   },
   {
     "icao": "LKSA",
-    "name": "Staňkov Airfield",
+    "name": "Staňkov",
     "lat": 49.5665,
     "lon": 13.0487,
     "type": "small-west",
@@ -2682,7 +2682,7 @@
   },
   {
     "icao": "LKSB",
-    "name": "Stichovice Pluml Airfield",
+    "name": "Stíčhovice-Pluml",
     "lat": 49.4874,
     "lon": 17.0526,
     "type": "small-east",
@@ -2700,7 +2700,7 @@
   },
   {
     "icao": "LKSK",
-    "name": "Skuteč Airfield",
+    "name": "Skuteč",
     "lat": 49.8278,
     "lon": 16.0058,
     "type": "small-south",
@@ -2726,7 +2726,7 @@
   },
   {
     "icao": "LKSN",
-    "name": "Slaný Airfield",
+    "name": "Slaný",
     "lat": 50.2164,
     "lon": 14.0878,
     "type": "small-north",
@@ -2752,7 +2752,7 @@
   },
   {
     "icao": "LKSO",
-    "name": "Soběslav Airfield",
+    "name": "Soběslav",
     "lat": 49.2455,
     "lon": 14.713,
     "type": "small-south",
@@ -2778,7 +2778,7 @@
   },
   {
     "icao": "LKSR",
-    "name": "Prachatice Airfield",
+    "name": "Prachatice",
     "lat": 49.0825,
     "lon": 14.0758,
     "type": "small-south",
@@ -2796,7 +2796,7 @@
   },
   {
     "icao": "LKST",
-    "name": "Strakonice Airfield",
+    "name": "Strakonice",
     "lat": 49.2517,
     "lon": 13.8928,
     "type": "small-south",
@@ -2822,7 +2822,7 @@
   },
   {
     "icao": "LKSU",
-    "name": "Šumperk Airfield",
+    "name": "Šumperk",
     "lat": 49.9606,
     "lon": 17.0178,
     "type": "small-east",
@@ -2848,7 +2848,7 @@
   },
   {
     "icao": "LKSZ",
-    "name": "Sazená Airfield",
+    "name": "Sazená",
     "lat": 50.3247,
     "lon": 14.2589,
     "type": "small-north",
@@ -2874,7 +2874,7 @@
   },
   {
     "icao": "LKTA",
-    "name": "Tábor Airfield",
+    "name": "Tábor",
     "lat": 49.3911,
     "lon": 14.7083,
     "type": "small-south",
@@ -2900,7 +2900,7 @@
   },
   {
     "icao": "LKTC",
-    "name": "Točná Airfield",
+    "name": "Točná",
     "lat": 49.9854,
     "lon": 14.4265,
     "type": "small-west",
@@ -2918,7 +2918,7 @@
   },
   {
     "icao": "LKTD",
-    "name": "Tachov Airfield",
+    "name": "Tachov",
     "lat": 49.7972,
     "lon": 12.7072,
     "type": "small-west",
@@ -2936,7 +2936,7 @@
   },
   {
     "icao": "LKTO",
-    "name": "Toužim Airfield",
+    "name": "Toužim",
     "lat": 50.0864,
     "lon": 12.9528,
     "type": "small-west",
@@ -2954,7 +2954,7 @@
   },
   {
     "icao": "LKUL",
-    "name": "Usti Nad Labem Airfield",
+    "name": "Ústí nad Labem",
     "lat": 50.6997,
     "lon": 13.9697,
     "type": "small-north",
@@ -2972,7 +2972,7 @@
   },
   {
     "icao": "LKUO",
-    "name": "Ústí Nad Orlicí Airfield",
+    "name": "Ústí Nad Orlicí",
     "lat": 49.9786,
     "lon": 16.4264,
     "type": "small-east",
@@ -2990,7 +2990,7 @@
   },
   {
     "icao": "LKVL",
-    "name": "Vlašim Airfield",
+    "name": "Vlašim",
     "lat": 49.7289,
     "lon": 14.8789,
     "type": "small-south",
@@ -3008,7 +3008,7 @@
   },
   {
     "icao": "LKVM",
-    "name": "Vysoké Mýto Airfield",
+    "name": "Vysoké Mýto",
     "lat": 49.9281,
     "lon": 16.185,
     "type": "small-east",
@@ -3042,7 +3042,7 @@
   },
   {
     "icao": "LKVP",
-    "name": "Velké Poříčí Airfield",
+    "name": "Velké Poříčí",
     "lat": 50.4678,
     "lon": 16.2056,
     "type": "small-north",
@@ -3068,7 +3068,7 @@
   },
   {
     "icao": "LKVR",
-    "name": "Vrchlabí Airfield",
+    "name": "Vrchlabí",
     "lat": 50.6242,
     "lon": 15.6464,
     "type": "small-north",
@@ -3112,7 +3112,7 @@
   },
   {
     "icao": "LKZA",
-    "name": "Zábřeh Dolní Benešov Airfield",
+    "name": "Zábřeh-Dolní Benešov",
     "lat": 49.9283,
     "lon": 18.0756,
     "type": "small-east",
@@ -3130,7 +3130,7 @@
   },
   {
     "icao": "LKZB",
-    "name": "Zbraslavice Airfield",
+    "name": "Zbraslavice",
     "lat": 49.8142,
     "lon": 15.2017,
     "type": "small-south",
@@ -3148,7 +3148,7 @@
   },
   {
     "icao": "LKZD",
-    "name": "Žatec-Macerka Airfield",
+    "name": "Žatec-Macerka",
     "lat": 50.3175,
     "lon": 13.5128,
     "type": "small-west",
@@ -3166,7 +3166,7 @@
   },
   {
     "icao": "LKZM",
-    "name": "Žamberk Airfield",
+    "name": "Žamberk",
     "lat": 50.0839,
     "lon": 16.4439,
     "type": "small-east",
@@ -3184,7 +3184,7 @@
   },
   {
     "icao": "LKZN",
-    "name": "Znojmo Airfield",
+    "name": "Znojmo",
     "lat": 48.8177,
     "lon": 16.0658,
     "type": "small-east",
@@ -3216,7 +3216,7 @@
   },
   {
     "icao": "CZ-0058",
-    "name": "Částkovice Airfield",
+    "name": "Částkovice",
     "lat": 49.4093,
     "lon": 15.1437,
     "type": "ultralight",
@@ -3230,7 +3230,7 @@
   },
   {
     "icao": "CZ-0059",
-    "name": "Chabeřice Private ULM Airstrip",
+    "name": "Chabeřice",
     "lat": 49.7476,
     "lon": 15.0642,
     "type": "ultralight",
@@ -3258,7 +3258,7 @@
   },
   {
     "icao": "CZ-0061",
-    "name": "Teplice Airfield",
+    "name": "Teplice",
     "lat": 50.6208,
     "lon": 13.8098,
     "type": "ultralight",
@@ -3346,7 +3346,7 @@
   },
   {
     "icao": "CZ-0071",
-    "name": "Vrátkov Airfield",
+    "name": "Vrátkov",
     "lat": 50.0395,
     "lon": 14.8227,
     "type": "ultralight",
@@ -3360,7 +3360,7 @@
   },
   {
     "icao": "CZ-0072",
-    "name": "Buranos Aires Ultralight Strip",
+    "name": "Buenos Aires",
     "lat": 50.0089,
     "lon": 14.0377,
     "type": "ultralight",
@@ -3402,7 +3402,7 @@
   },
   {
     "icao": "CZ-0095",
-    "name": "Doudleby Airstrip",
+    "name": "Doudleby",
     "lat": 48.885,
     "lon": 14.4864,
     "type": "ultralight",
@@ -3416,7 +3416,7 @@
   },
   {
     "icao": "CZ-0100",
-    "name": "Choteč Airfield",
+    "name": "Choteč",
     "lat": 50.4339,
     "lon": 15.5306,
     "type": "ultralight",
@@ -3458,7 +3458,7 @@
   },
   {
     "icao": "CZ-0104",
-    "name": "Plešnice Airfield",
+    "name": "Plešnice",
     "lat": 49.7722,
     "lon": 13.1622,
     "type": "ultralight",
@@ -3476,7 +3476,7 @@
   },
   {
     "icao": "CZ-0105",
-    "name": "Rohozec Airfield",
+    "name": "Rohozec",
     "lat": 49.9819,
     "lon": 15.3928,
     "type": "ultralight",
@@ -3490,7 +3490,7 @@
   },
   {
     "icao": "CZ-0129",
-    "name": "Osičiny Airstrip",
+    "name": "Osičiny",
     "lat": 50.0165,
     "lon": 14.7722,
     "type": "ultralight",
@@ -3518,7 +3518,7 @@
   },
   {
     "icao": "CZ-0163",
-    "name": "Excalibur City Airfield",
+    "name": "Excalibur City",
     "lat": 48.7616,
     "lon": 16.0554,
     "type": "ultralight",
@@ -3532,7 +3532,7 @@
   },
   {
     "icao": "CZ-0171",
-    "name": "Rovná u Sokolova Airstrip",
+    "name": "Rovná u Sokolova",
     "lat": 50.1011,
     "lon": 12.6788,
     "type": "ultralight",
@@ -3546,7 +3546,7 @@
   },
   {
     "icao": "CZ-0194",
-    "name": "Písek UL Airstrip",
+    "name": "Písek UL",
     "lat": 49.3394,
     "lon": 14.1139,
     "type": "ultralight",
@@ -3560,7 +3560,7 @@
   },
   {
     "icao": "LKP1",
-    "name": "PRAZSKY HRAD",
+    "name": "Pražský hrad",
     "lat": 50.09098,
     "lon": 14.40153,
     "type": "prohibited",
@@ -3598,7 +3598,7 @@
   },
   {
     "icao": "LKP2",
-    "name": "TEMELIN",
+    "name": "Temelín",
     "lat": 49.18028,
     "lon": 14.37556,
     "type": "prohibited",
@@ -3660,7 +3660,7 @@
   },
   {
     "icao": "LKP4",
-    "name": "VLASIM",
+    "name": "Vlašim",
     "lat": 49.68403,
     "lon": 14.93264,
     "type": "prohibited",
@@ -3686,7 +3686,7 @@
   },
   {
     "icao": "LKP5",
-    "name": "PRCICE",
+    "name": "Prčice",
     "lat": 49.59278,
     "lon": 14.52333,
     "type": "prohibited",
@@ -3748,7 +3748,7 @@
   },
   {
     "icao": "LKP6",
-    "name": "SEMTIN",
+    "name": "Semtín",
     "lat": 50.06806,
     "lon": 15.71167,
     "type": "prohibited",
@@ -3810,7 +3810,7 @@
   },
   {
     "icao": "LKP7",
-    "name": "POLICKA",
+    "name": "Polička",
     "lat": 49.67944,
     "lon": 16.27778,
     "type": "prohibited",
@@ -3872,7 +3872,7 @@
   },
   {
     "icao": "LKP8",
-    "name": "MOST",
+    "name": "Most",
     "lat": 50.56333,
     "lon": 13.60333,
     "type": "prohibited",
@@ -3934,7 +3934,7 @@
   },
   {
     "icao": "LKP9",
-    "name": "DUKOVANY",
+    "name": "Dukovany",
     "lat": 49.08583,
     "lon": 16.14583,
     "type": "prohibited",
@@ -3996,7 +3996,7 @@
   },
   {
     "icao": "LKP10",
-    "name": "USTI NAD LABEM",
+    "name": "Ústí nad Labem",
     "lat": 50.65639,
     "lon": 14.02028,
     "type": "prohibited",
@@ -4058,7 +4058,7 @@
   },
   {
     "icao": "LKP11",
-    "name": "NERATOVICE",
+    "name": "Neratovice",
     "lat": 50.275,
     "lon": 14.51944,
     "type": "prohibited",
@@ -4120,7 +4120,7 @@
   },
   {
     "icao": "LKP12",
-    "name": "REZ",
+    "name": "Řež",
     "lat": 50.17917,
     "lon": 14.36361,
     "type": "prohibited",
@@ -4182,7 +4182,7 @@
   },
   {
     "icao": "LKR9",
-    "name": "PRAHA",
+    "name": "Praha",
     "lat": 50.08306,
     "lon": 14.43528,
     "type": "restricted",
@@ -4244,7 +4244,7 @@
   },
   {
     "icao": "LKR1",
-    "name": "SUMAVA",
+    "name": "Šumava",
     "lat": 48.9557,
     "lon": 13.63028,
     "type": "restricted",
@@ -4318,7 +4318,7 @@
   },
   {
     "icao": "LKR2",
-    "name": "CESKE SVYCARSKO",
+    "name": "České Švýcarsko",
     "lat": 50.88362,
     "lon": 14.34417,
     "type": "restricted",
@@ -4384,7 +4384,7 @@
   },
   {
     "icao": "LKR3",
-    "name": "KRNAP",
+    "name": "Krkonoše",
     "lat": 50.71875,
     "lon": 15.6582,
     "type": "restricted",
@@ -4458,7 +4458,7 @@
   },
   {
     "icao": "LKR4",
-    "name": "PODYJI",
+    "name": "Podyjí",
     "lat": 48.85334,
     "lon": 15.91055,
     "type": "restricted",
@@ -4624,7 +4624,7 @@
   },
   {
     "icao": "LKTRA6",
-    "name": "PROSTEJOV (GND–FL95)",
+    "name": "Prostějov (GND–FL95)",
     "lat": 49.44778,
     "lon": 17.13389,
     "type": "tra",
@@ -4686,7 +4686,7 @@
   },
   {
     "icao": "LKTRA10",
-    "name": "POHORELICE (GND–3000ft)",
+    "name": "Pohořelice (GND–3000ft)",
     "lat": 48.99125,
     "lon": 16.43445,
     "type": "tra",
@@ -4716,7 +4716,7 @@
   },
   {
     "icao": "LKTRA11",
-    "name": "MIROSLAV (3000ft–FL125)",
+    "name": "Miroslav (3000ft–FL125)",
     "lat": 48.91403,
     "lon": 16.31833,
     "type": "tra",
@@ -4746,7 +4746,7 @@
   },
   {
     "icao": "LKTRA12",
-    "name": "UNANOV (GND–FL125)",
+    "name": "Únanov (GND–FL125)",
     "lat": 48.91097,
     "lon": 16.16917,
     "type": "tra",
@@ -4788,7 +4788,7 @@
   },
   {
     "icao": "LKTRA13",
-    "name": "JEVISOVICE (GND–FL125)",
+    "name": "Jevišovice (GND–FL125)",
     "lat": 49.015,
     "lon": 15.93098,
     "type": "tra",
@@ -4818,7 +4818,7 @@
   },
   {
     "icao": "LKTRA14",
-    "name": "CASLAVICE (GND–FL125)",
+    "name": "Čáslavice (GND–FL125)",
     "lat": 49.09917,
     "lon": 15.72736,
     "type": "tra",
@@ -4852,7 +4852,7 @@
   },
   {
     "icao": "LKTRA15",
-    "name": "BRTNICE (300ft AGL–FL125)",
+    "name": "Brtnice (300ft AGL–FL125)",
     "lat": 49.22986,
     "lon": 15.61362,
     "type": "tra",
@@ -4898,7 +4898,7 @@
   },
   {
     "icao": "LKTRA16",
-    "name": "TREST (5000ft–FL125)",
+    "name": "Třešť (5000ft–FL125)",
     "lat": 49.33153,
     "lon": 15.57055,
     "type": "tra",
@@ -4928,7 +4928,7 @@
   },
   {
     "icao": "LKTRA17",
-    "name": "OKRISKY (GND–3500ft)",
+    "name": "Okříšky (GND–3500ft)",
     "lat": 49.25445,
     "lon": 15.81167,
     "type": "tra",
@@ -4962,7 +4962,7 @@
   },
   {
     "icao": "LKTRA31",
-    "name": "ZDAR NAD SAZAVOU (1000ft AGL–FL245)",
+    "name": "Žďár nad Sázavou (1000ft AGL–FL245)",
     "lat": 49.64084,
     "lon": 16.01806,
     "type": "tra",
@@ -5000,7 +5000,7 @@
   },
   {
     "icao": "LKTRA32",
-    "name": "PROSEC (5000ft–FL245)",
+    "name": "Proseč (5000ft–FL245)",
     "lat": 49.76014,
     "lon": 16.14764,
     "type": "tra",
@@ -5038,7 +5038,7 @@
   },
   {
     "icao": "LKTRA33",
-    "name": "LETOVICE (5000ft–FL245)",
+    "name": "Letovice (5000ft–FL245)",
     "lat": 49.57014,
     "lon": 16.41236,
     "type": "tra",
@@ -5076,7 +5076,7 @@
   },
   {
     "icao": "LKTRA34",
-    "name": "MOHELNICE (5000ft–FL245)",
+    "name": "Mohelnice (5000ft–FL245)",
     "lat": 49.72125,
     "lon": 17.01959,
     "type": "tra",
@@ -5126,7 +5126,7 @@
   },
   {
     "icao": "LKTRA56",
-    "name": "NOVY BYDZOV (1000ft AGL–FL125)",
+    "name": "Nový Bydžov (1000ft AGL–FL125)",
     "lat": 50.22889,
     "lon": 15.56167,
     "type": "tra",
@@ -5156,7 +5156,7 @@
   },
   {
     "icao": "LKTRA57",
-    "name": "VAMBERK (3000ft–FL125)",
+    "name": "Vamberk (3000ft–FL125)",
     "lat": 50.19292,
     "lon": 16.14778,
     "type": "tra",
@@ -5182,7 +5182,7 @@
   },
   {
     "icao": "LKTRA61",
-    "name": "KOPIDLNO (GND–3000ft)",
+    "name": "Kopidlno (GND–3000ft)",
     "lat": 50.31417,
     "lon": 15.15944,
     "type": "tra",
@@ -5244,7 +5244,7 @@
   },
   {
     "icao": "LKTRA62",
-    "name": "NYMBURK (3000ft–FL245)",
+    "name": "Nymburk (3000ft–FL245)",
     "lat": 50.09583,
     "lon": 14.26556,
     "type": "tra",
@@ -5286,7 +5286,7 @@
   },
   {
     "icao": "LKTRA71",
-    "name": "SMIDARY (GND–1000ft AGL)",
+    "name": "Smidary (GND–1000ft AGL)",
     "lat": 50.22014,
     "lon": 15.59556,
     "type": "tra",
@@ -5320,7 +5320,7 @@
   },
   {
     "icao": "LKTRA72",
-    "name": "OPOCNO (GND–3000ft)",
+    "name": "Opočno (GND–3000ft)",
     "lat": 50.21708,
     "lon": 16.14167,
     "type": "tra",
@@ -5350,7 +5350,7 @@
   },
   {
     "icao": "LKTRA73",
-    "name": "BOROHRADEK (GND–2500ft)",
+    "name": "Borohrádek (GND–2500ft)",
     "lat": 50.06139,
     "lon": 16.18223,
     "type": "tra",
@@ -5380,7 +5380,7 @@
   },
   {
     "icao": "LKTRA74",
-    "name": "VOLARY (1000ft AGL–FL95)",
+    "name": "Volary (1000ft AGL–FL95)",
     "lat": 48.96737,
     "lon": 14.16973,
     "type": "tra",
@@ -5422,7 +5422,7 @@
   },
   {
     "icao": "LKTRA76",
-    "name": "BLATNA (1000ft AGL–FL75)",
+    "name": "Blatná (1000ft AGL–FL75)",
     "lat": 49.51584,
     "lon": 13.99209,
     "type": "tra",
@@ -5452,7 +5452,7 @@
   },
   {
     "icao": "LKTRA77",
-    "name": "MILEVSKO (1000ft AGL–FL245)",
+    "name": "Milevsko (1000ft AGL–FL245)",
     "lat": 49.38334,
     "lon": 14.25556,
     "type": "tra",
@@ -5486,7 +5486,7 @@
   },
   {
     "icao": "LKTRA78",
-    "name": "SOBESLAV (1000ft AGL–FL245)",
+    "name": "Soběslav (1000ft AGL–FL245)",
     "lat": 49.2232,
     "lon": 14.54945,
     "type": "tra",
@@ -5528,7 +5528,7 @@
   },
   {
     "icao": "LKTRA93",
-    "name": "PREROV (4000ft–FL75)",
+    "name": "Přerov (4000ft–FL75)",
     "lat": 49.42583,
     "lon": 17.40472,
     "type": "tra",
@@ -5590,7 +5590,7 @@
   },
   {
     "icao": "LKTRA94",
-    "name": "PIVIN (3500ft–FL95)",
+    "name": "Pivín (3500ft–FL95)",
     "lat": 49.44778,
     "lon": 17.13389,
     "type": "tra",
@@ -5624,7 +5624,7 @@
   },
   {
     "icao": "LKTRA95",
-    "name": "PRASLAVICE (3500ft–FL125)",
+    "name": "Práslavice (3500ft–FL125)",
     "lat": 49.42583,
     "lon": 17.40472,
     "type": "tra",
@@ -5666,7 +5666,7 @@
   },
   {
     "icao": "LKTRA18",
-    "name": "NAMEST (FL95–FL125)",
+    "name": "Náměšť (FL95–FL125)",
     "lat": 49.10417,
     "lon": 16.16417,
     "type": "tra",
@@ -5728,7 +5728,7 @@
   },
   {
     "icao": "LKTRA19",
-    "name": "TREBIC (FL125–FL245)",
+    "name": "Třebíč (FL125–FL245)",
     "lat": 49.09111,
     "lon": 15.92181,
     "type": "tra",
@@ -5806,7 +5806,7 @@
   },
   {
     "icao": "LKTRA30",
-    "name": "CASLAV (FL95–FL245)",
+    "name": "Čáslav (FL95–FL245)",
     "lat": 49.8975,
     "lon": 15.44889,
     "type": "tra",
@@ -5864,7 +5864,7 @@
   },
   {
     "icao": "LKTRA35",
-    "name": "SUMPERK (FL95–FL245)",
+    "name": "Šumperk (FL95–FL245)",
     "lat": 50.02695,
     "lon": 16.79,
     "type": "tra",
@@ -5906,7 +5906,7 @@
   },
   {
     "icao": "LKTRA36",
-    "name": "HOLICE (FL125–FL245)",
+    "name": "Holice (FL125–FL245)",
     "lat": 50.11459,
     "lon": 15.87375,
     "type": "tra",
@@ -5956,7 +5956,7 @@
   },
   {
     "icao": "LKTRA37",
-    "name": "NOVA PAKA (FL95–FL660)",
+    "name": "Nová Paka (FL95–FL660)",
     "lat": 50.41764,
     "lon": 15.75125,
     "type": "tra",
@@ -6018,7 +6018,7 @@
   },
   {
     "icao": "LKTRA38",
-    "name": "HABRY (FL245–FL660)",
+    "name": "Habry (FL245–FL660)",
     "lat": 49.79264,
     "lon": 15.39556,
     "type": "tra",
@@ -6052,7 +6052,7 @@
   },
   {
     "icao": "LKTRA63",
-    "name": "PARDUBICE (FL95–FL125)",
+    "name": "Pardubice (FL95–FL125)",
     "lat": 49.99806,
     "lon": 15.87375,
     "type": "tra",
@@ -6098,7 +6098,7 @@
   },
   {
     "icao": "LKTRA75",
-    "name": "PRACHATICE (FL95–FL245)",
+    "name": "Prachatice (FL95–FL245)",
     "lat": 49.07084,
     "lon": 14.15181,
     "type": "tra",
@@ -6140,7 +6140,7 @@
   },
   {
     "icao": "LKTRA79",
-    "name": "HOSIN (FL95–FL245)",
+    "name": "Hosín (FL95–FL245)",
     "lat": 48.98834,
     "lon": 14.52139,
     "type": "tra",

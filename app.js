@@ -403,10 +403,10 @@ function startGame() {
 
 function showCurrentQuestion() {
   const airport = roundAirports[currentRound];
-  document.getElementById('round-counter').textContent = `Round ${currentRound + 1}/${roundAirports.length}`;
+  document.getElementById('round-counter').textContent = `Kolo ${currentRound + 1}/${roundAirports.length}`;
 
   document.getElementById('question-text').innerHTML =
-    `Find: <span class="icao">${airport.icao}</span> — ${airport.name}`;
+    `Najdi: <span class="icao">${airport.icao}</span> — ${airport.name}`;
 }
 
 // --- Score Sheet ---
@@ -431,7 +431,7 @@ function renderScoreSheet() {
   });
 
   const correctCount = results.filter(r => r.correct).length;
-  document.getElementById('score-total').textContent = `Score: ${correctCount}/${results.length}`;
+  document.getElementById('score-total').textContent = `Skóre: ${correctCount}/${results.length}`;
 }
 
 // --- Feedback ---
@@ -553,7 +553,7 @@ function showSummary() {
   const practiceBtn = document.getElementById('practice-missed');
   if (missed.length > 0) {
     practiceBtn.classList.remove('hidden');
-    practiceBtn.textContent = `Practice ${missed.length} missed`;
+    practiceBtn.textContent = `Procvičit ${missed.length} chybných`;
   } else {
     practiceBtn.classList.add('hidden');
   }
@@ -586,7 +586,7 @@ async function init() {
     airportData = await loadJSON('data/airports.json');
   } catch (err) {
     document.getElementById('start-screen').innerHTML =
-      '<h1>Failed to load game data</h1><p>Please run via a local HTTP server (e.g. python3 -m http.server)</p>';
+      '<h1>Nepodařilo se načíst data</h1><p>Spusťte přes lokální HTTP server (např. python3 -m http.server)</p>';
     return;
   }
   loadWeights();
@@ -621,7 +621,7 @@ async function init() {
 
   document.getElementById('reset-progress').addEventListener('click', (e) => {
     e.preventDefault();
-    if (confirm('Reset all learning progress?')) {
+    if (confirm('Smazat veškerý postup učení?')) {
       localStorage.removeItem('guessAirport_weights');
       localStorage.removeItem('guessAirport_seen');
       weights = {};
@@ -633,7 +633,7 @@ async function init() {
     document.getElementById('sidebar').classList.toggle('expanded');
     const toggle = document.getElementById('sidebar-toggle');
     toggle.classList.toggle('active');
-    toggle.textContent = toggle.classList.contains('active') ? '◀ Score' : 'Score ▶';
+    toggle.textContent = toggle.classList.contains('active') ? '◀ Skóre' : 'Skóre ▶';
   });
 
   document.getElementById('practice-missed').addEventListener('click', () => {
