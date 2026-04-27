@@ -243,7 +243,7 @@ function renderAirports(airports) {
     }
 
     if (airport.runways.length > 0) renderRunways(g, airport);
-    if (learningMode) {
+    if (browseMode) {
       const center = lonLatToXY(airport.lon, airport.lat);
       const text = svgEl('text', {
         x: center.x, y: center.y + 25,
@@ -310,7 +310,8 @@ let gameState = 'start';
 let currentRound = 0;
 let currentPool = [];
 let roundAirports = [];
-let learningMode = false;
+let browseMode = false;
+let hintMode = false;
 let results = [];
 
 function shuffleArray(arr) {
@@ -325,11 +326,12 @@ function shuffleArray(arr) {
 function startGame() {
   const checked = [...document.querySelectorAll('#custom-checks input:checked')].map(cb => cb.value);
   if (checked.length === 0) return;
-  learningMode = document.getElementById('learning-mode').checked;
+  browseMode = document.getElementById('browse-mode').checked;
+  hintMode = document.getElementById('learning-mode').checked;
   const infinityMode = document.getElementById('infinity-mode').checked;
 
   localStorage.setItem('guessAirport_settings', JSON.stringify({
-    categories: checked, learning: learningMode, infinity: infinityMode
+    categories: checked, browse: browseMode, hint: hintMode, infinity: infinityMode
   }));
 
   currentPool = airportData.filter(a => checked.includes(a.type));
@@ -350,11 +352,30 @@ function startGame() {
   showCurrentQuestion();
 }
 
+const HINT_DURATION_MS = 2500;
+
 function showCurrentQuestion() {
   const airport = roundAirports[currentRound];
   document.getElementById('round-counter').textContent = `Round ${currentRound + 1}/${roundAirports.length}`;
-  document.getElementById('question-text').innerHTML =
-    `Find: <span class="icao">${airport.icao}</span> — ${airport.name}`;
+
+  if (hintMode) {
+    gameState = 'hint';
+    document.getElementById('question-text').innerHTML =
+      `Remember: <span class="icao">${airport.icao}</span> — ${airport.name}`;
+    const feedbackLayer = document.getElementById('feedback-layer');
+    feedbackLayer.innerHTML = '';
+    highlightAirport(feedbackLayer, airport, COLORS.correct, 3);
+    labelAirport(feedbackLayer, airport, COLORS.correct);
+    setTimeout(() => {
+      feedbackLayer.innerHTML = '';
+      gameState = 'playing';
+      document.getElementById('question-text').innerHTML =
+        `Find: <span class="icao">${airport.icao}</span> — ${airport.name}`;
+    }, HINT_DURATION_MS);
+  } else {
+    document.getElementById('question-text').innerHTML =
+      `Find: <span class="icao">${airport.icao}</span> — ${airport.name}`;
+  }
 }
 
 // --- Score Sheet ---
@@ -536,7 +557,8 @@ async function init() {
     document.querySelectorAll('#custom-checks input[type="checkbox"]').forEach(cb => {
       cb.checked = saved.categories?.includes(cb.value) ?? false;
     });
-    document.getElementById('learning-mode').checked = saved.learning ?? false;
+    document.getElementById('browse-mode').checked = saved.browse ?? false;
+    document.getElementById('learning-mode').checked = saved.hint ?? false;
     document.getElementById('infinity-mode').checked = saved.infinity ?? false;
   }
 
