@@ -228,15 +228,23 @@ body {
   margin-bottom: 32px;
 }
 
-#custom-checks {
+#custom-checks,
+#modifiers {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 24px;
   text-align: left;
 }
 
-#custom-checks label {
+#modifiers {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #d5cdb6;
+  margin-bottom: 16px;
+}
+
+#custom-checks label,
+#modifiers label {
   font-size: 15px;
   color: #073642;
   cursor: pointer;
@@ -248,27 +256,9 @@ body {
 input[type="checkbox"] {
   width: 18px;
   height: 18px;
+  flex-shrink: 0;
   accent-color: #268bd2;
   cursor: pointer;
-}
-
-#modifiers {
-  margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid #d5cdb6;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-#modifiers label {
-  font-size: 15px;
-  color: #073642;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 .diff-btn {
