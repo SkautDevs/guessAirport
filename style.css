@@ -116,6 +116,10 @@ body {
   #question-bar {
     right: 0;
   }
+
+  #scout-logo {
+    width: 80px;
+  }
 }
 
 #sidebar h2 {
