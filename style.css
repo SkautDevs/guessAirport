@@ -228,19 +228,22 @@ body {
   margin-bottom: 32px;
 }
 
+#options-wrapper {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
 #custom-checks,
 #modifiers {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  text-align: left;
 }
 
 #modifiers {
   margin-top: 8px;
   padding-top: 8px;
   border-top: 1px solid #d5cdb6;
-  margin-bottom: 16px;
 }
 
 #custom-checks label,
