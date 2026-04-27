@@ -64,6 +64,119 @@ async function loadJSON(url) {
   return res.json();
 }
 
+// --- Zoom & Pan ---
+
+const DEFAULT_VIEWBOX = { x: 0, y: 0, w: SVG_WIDTH, h: SVG_HEIGHT };
+let viewBox = { ...DEFAULT_VIEWBOX };
+let isPanning = false;
+let panStart = { x: 0, y: 0 };
+let pinchStartDist = 0;
+let pinchStartVB = null;
+
+function applyViewBox() {
+  const svg = document.getElementById('map');
+  svg.setAttribute('viewBox', `${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`);
+  const zoomed = viewBox.w < SVG_WIDTH - 1;
+  document.getElementById('reset-zoom').style.display = zoomed ? 'block' : 'none';
+}
+
+function resetZoom() {
+  viewBox = { ...DEFAULT_VIEWBOX };
+  applyViewBox();
+}
+
+function zoomAt(cx, cy, factor) {
+  const newW = Math.max(100, Math.min(SVG_WIDTH, viewBox.w * factor));
+  const newH = Math.max(62.5, Math.min(SVG_HEIGHT, newW * SVG_HEIGHT / SVG_WIDTH));
+  const scale = newW / viewBox.w;
+  viewBox.x = cx - (cx - viewBox.x) * scale;
+  viewBox.y = cy - (cy - viewBox.y) * scale;
+  viewBox.w = newW;
+  viewBox.h = newH;
+  applyViewBox();
+}
+
+function screenToSVG(clientX, clientY) {
+  const svg = document.getElementById('map');
+  const pt = new DOMPoint(clientX, clientY);
+  return pt.matrixTransform(svg.getScreenCTM().inverse());
+}
+
+function initZoomPan() {
+  const svg = document.getElementById('map');
+
+  // Wheel zoom
+  svg.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const pt = screenToSVG(e.clientX, e.clientY);
+    const factor = e.deltaY > 0 ? 1.15 : 0.87;
+    zoomAt(pt.x, pt.y, factor);
+  }, { passive: false });
+
+  // Mouse pan
+  svg.addEventListener('mousedown', (e) => {
+    if (e.button !== 0) return;
+    isPanning = true;
+    panStart = screenToSVG(e.clientX, e.clientY);
+  });
+  svg.addEventListener('mousemove', (e) => {
+    if (!isPanning) return;
+    const pt = screenToSVG(e.clientX, e.clientY);
+    viewBox.x -= pt.x - panStart.x;
+    viewBox.y -= pt.y - panStart.y;
+    applyViewBox();
+  });
+  svg.addEventListener('mouseup', () => { isPanning = false; });
+  svg.addEventListener('mouseleave', () => { isPanning = false; });
+
+  // Touch pinch zoom + pan
+  svg.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      pinchStartDist = Math.sqrt(dx * dx + dy * dy);
+      pinchStartVB = { ...viewBox };
+    } else if (e.touches.length === 1 && viewBox.w < SVG_WIDTH - 1) {
+      isPanning = true;
+      panStart = screenToSVG(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: false });
+
+  svg.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 2 && pinchStartDist) {
+      e.preventDefault();
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const scale = pinchStartDist / dist;
+      const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+      const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+      const center = screenToSVG(cx, cy);
+      const newW = Math.max(100, Math.min(SVG_WIDTH, pinchStartVB.w * scale));
+      const newH = newW * SVG_HEIGHT / SVG_WIDTH;
+      viewBox.w = newW;
+      viewBox.h = newH;
+      viewBox.x = center.x - newW / 2;
+      viewBox.y = center.y - newH / 2;
+      applyViewBox();
+    } else if (e.touches.length === 1 && isPanning) {
+      const pt = screenToSVG(e.touches[0].clientX, e.touches[0].clientY);
+      viewBox.x -= pt.x - panStart.x;
+      viewBox.y -= pt.y - panStart.y;
+      applyViewBox();
+    }
+  }, { passive: false });
+
+  svg.addEventListener('touchend', () => {
+    isPanning = false;
+    pinchStartDist = 0;
+    pinchStartVB = null;
+  });
+
+  document.getElementById('reset-zoom').addEventListener('click', resetZoom);
+}
+
 function nmToPixels(nm) {
   const degLat = nm * (1.852 / 111.32);
   return (degLat / LAT_RANGE) * DRAW_HEIGHT;
@@ -500,12 +613,22 @@ function showFeedback(targetAirport, correct, clickedAirport) {
 
 // --- Click Handler ---
 
+let mouseDownPos = null;
+
+function handleMapMouseDown(e) {
+  mouseDownPos = { x: e.clientX, y: e.clientY };
+}
+
 function handleMapClick(e) {
   if (gameState !== 'playing') return;
+  // Ignore if mouse moved (was panning)
+  if (mouseDownPos) {
+    const dx = e.clientX - mouseDownPos.x;
+    const dy = e.clientY - mouseDownPos.y;
+    if (dx * dx + dy * dy > 25) return;
+  }
 
-  const svg = document.getElementById('map');
-  const pt = new DOMPoint(e.clientX, e.clientY);
-  const svgPt = pt.matrixTransform(svg.getScreenCTM().inverse());
+  const svgPt = screenToSVG(e.clientX, e.clientY);
 
   const targetAirport = roundAirports[currentRound];
   const clickedAirport = findClickedAirport(svgPt.x, svgPt.y, currentPool, targetAirport.type);
@@ -611,7 +734,9 @@ async function init() {
 
   document.getElementById('start-btn').addEventListener('click', startGame);
 
+  document.getElementById('map').addEventListener('mousedown', handleMapMouseDown);
   document.getElementById('map').addEventListener('click', handleMapClick);
+  initZoomPan();
 
   document.getElementById('play-again').addEventListener('click', () => {
     document.getElementById('summary-screen').classList.add('hidden');

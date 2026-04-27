@@ -14,19 +14,24 @@
       <span id="question-text"></span>
     </div>
 
-    <!-- SVG map container -->
-    <svg id="map" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
-      <g id="border-layer"></g>
-      <g id="airport-layer"></g>
-      <g id="feedback-layer"></g>
-    </svg>
+    <!-- Game body: map + sidebar -->
+    <div id="game-body">
+      <div id="map-container">
+        <svg id="map" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
+          <g id="border-layer"></g>
+          <g id="airport-layer"></g>
+          <g id="feedback-layer"></g>
+        </svg>
+        <button id="reset-zoom">Reset zoom</button>
+      </div>
 
-    <!-- Score sidebar -->
-    <button id="sidebar-toggle">Skóre ▶</button>
-    <div id="sidebar" class="hidden">
-      <h2>Výsledky</h2>
-      <ul id="score-list"></ul>
-      <div id="score-total"></div>
+      <!-- Score sidebar -->
+      <button id="sidebar-toggle">Skóre ▶</button>
+      <div id="sidebar" class="hidden">
+        <h2>Výsledky</h2>
+        <ul id="score-list"></ul>
+        <div id="score-total"></div>
+      </div>
     </div>
 
     <!-- Start screen overlay -->
