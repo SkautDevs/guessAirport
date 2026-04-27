@@ -619,6 +619,13 @@ async function init() {
     document.getElementById('sidebar').classList.add('hidden');
   });
 
+  document.getElementById('sidebar-toggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('expanded');
+    const toggle = document.getElementById('sidebar-toggle');
+    toggle.classList.toggle('active');
+    toggle.textContent = toggle.classList.contains('active') ? '◀ Score' : 'Score ▶';
+  });
+
   document.getElementById('practice-missed').addEventListener('click', () => {
     const missed = results.filter(r => !r.correct).map(r => r.airport);
     document.getElementById('summary-screen').classList.add('hidden');
