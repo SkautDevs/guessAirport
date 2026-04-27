@@ -619,6 +619,16 @@ async function init() {
     document.getElementById('sidebar').classList.add('hidden');
   });
 
+  document.getElementById('reset-progress').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (confirm('Reset all learning progress?')) {
+      localStorage.removeItem('guessAirport_weights');
+      localStorage.removeItem('guessAirport_seen');
+      weights = {};
+      seen = new Set();
+    }
+  });
+
   document.getElementById('sidebar-toggle').addEventListener('click', () => {
     document.getElementById('sidebar').classList.toggle('expanded');
     const toggle = document.getElementById('sidebar-toggle');
