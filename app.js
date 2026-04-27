@@ -8,6 +8,7 @@ const COLORS = {
   airport: '#268bd2',
   prohibited: '#dc322f',
   restricted: '#859900',
+  tra: '#b58900',
   vor: '#6c71c4',
   border: '#586e75',
   grid: '#d5cdb6',
@@ -167,11 +168,12 @@ function renderRunways(g, airport) {
 }
 
 function renderCTR(g, airport) {
-  const isRestricted = airport.type === 'prohibited' || airport.type === 'restricted';
+  const isSpecial = airport.type === 'prohibited' || airport.type === 'restricted' || airport.type === 'tra';
   const color = airport.type === 'prohibited' ? COLORS.prohibited
     : airport.type === 'restricted' ? COLORS.restricted
+    : airport.type === 'tra' ? COLORS.tra
     : COLORS.airport;
-  const fillOpacity = isRestricted ? '0.08' : '0.06';
+  const fillOpacity = isSpecial ? '0.08' : '0.06';
 
   g.appendChild(svgEl('polygon', {
     points: ctrToSVGPoints(airport.ctr),
