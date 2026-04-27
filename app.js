@@ -429,6 +429,7 @@ function showFeedback(targetAirport, correct, clickedAirport) {
 
   if (correct) {
     highlightAirport(feedbackLayer, targetAirport, COLORS.correct, 3);
+    if (targetAirport.icao === 'LKMB') showEasterEgg();
   } else {
     if (clickedAirport) {
       highlightAirport(feedbackLayer, clickedAirport, COLORS.wrong, 2);
@@ -496,6 +497,20 @@ function showSummary() {
   });
 
   document.getElementById('summary-screen').classList.remove('hidden');
+}
+
+// --- Easter Egg ---
+
+function showEasterEgg() {
+  const egg = document.getElementById('easter-egg');
+  egg.innerHTML = `
+    <img src="data/LeteckySkauting_Logo.jpg" alt="Letecký Skauting">
+    <h2>🏠 Domovské letiště!</h2>
+    <p>LKMB — Mladá Boleslav</p>
+    <p class="subtitle">Základna Leteckého Skautingu</p>
+  `;
+  egg.classList.remove('hidden');
+  setTimeout(() => egg.classList.add('hidden'), 4000);
 }
 
 // --- Init ---
