@@ -4624,7 +4624,7 @@
   },
   {
     "icao": "LKTRA6",
-    "name": "PROSTEJOV",
+    "name": "PROSTEJOV (GND–FL95)",
     "lat": 49.44778,
     "lon": 17.13389,
     "type": "tra",
@@ -4686,7 +4686,7 @@
   },
   {
     "icao": "LKTRA10",
-    "name": "POHORELICE",
+    "name": "POHORELICE (GND–3000ft)",
     "lat": 48.99125,
     "lon": 16.43445,
     "type": "tra",
@@ -4716,7 +4716,7 @@
   },
   {
     "icao": "LKTRA11",
-    "name": "MIROSLAV",
+    "name": "MIROSLAV (3000ft–FL125)",
     "lat": 48.91403,
     "lon": 16.31833,
     "type": "tra",
@@ -4746,7 +4746,7 @@
   },
   {
     "icao": "LKTRA12",
-    "name": "UNANOV",
+    "name": "UNANOV (GND–FL125)",
     "lat": 48.91097,
     "lon": 16.16917,
     "type": "tra",
@@ -4788,7 +4788,7 @@
   },
   {
     "icao": "LKTRA13",
-    "name": "JEVISOVICE",
+    "name": "JEVISOVICE (GND–FL125)",
     "lat": 49.015,
     "lon": 15.93098,
     "type": "tra",
@@ -4818,7 +4818,7 @@
   },
   {
     "icao": "LKTRA14",
-    "name": "CASLAVICE",
+    "name": "CASLAVICE (GND–FL125)",
     "lat": 49.09917,
     "lon": 15.72736,
     "type": "tra",
@@ -4852,7 +4852,7 @@
   },
   {
     "icao": "LKTRA15",
-    "name": "BRTNICE",
+    "name": "BRTNICE (300ft AGL–FL125)",
     "lat": 49.22986,
     "lon": 15.61362,
     "type": "tra",
@@ -4898,7 +4898,7 @@
   },
   {
     "icao": "LKTRA16",
-    "name": "TREST",
+    "name": "TREST (5000ft–FL125)",
     "lat": 49.33153,
     "lon": 15.57055,
     "type": "tra",
@@ -4928,7 +4928,7 @@
   },
   {
     "icao": "LKTRA17",
-    "name": "OKRISKY",
+    "name": "OKRISKY (GND–3500ft)",
     "lat": 49.25445,
     "lon": 15.81167,
     "type": "tra",
@@ -4962,7 +4962,7 @@
   },
   {
     "icao": "LKTRA31",
-    "name": "ZDAR NAD SAZAVOU",
+    "name": "ZDAR NAD SAZAVOU (1000ft AGL–FL245)",
     "lat": 49.64084,
     "lon": 16.01806,
     "type": "tra",
@@ -5000,7 +5000,7 @@
   },
   {
     "icao": "LKTRA32",
-    "name": "PROSEC",
+    "name": "PROSEC (5000ft–FL245)",
     "lat": 49.76014,
     "lon": 16.14764,
     "type": "tra",
@@ -5038,7 +5038,7 @@
   },
   {
     "icao": "LKTRA33",
-    "name": "LETOVICE",
+    "name": "LETOVICE (5000ft–FL245)",
     "lat": 49.57014,
     "lon": 16.41236,
     "type": "tra",
@@ -5076,7 +5076,7 @@
   },
   {
     "icao": "LKTRA34",
-    "name": "MOHELNICE",
+    "name": "MOHELNICE (5000ft–FL245)",
     "lat": 49.72125,
     "lon": 17.01959,
     "type": "tra",
@@ -5126,7 +5126,7 @@
   },
   {
     "icao": "LKTRA56",
-    "name": "NOVY BYDZOV",
+    "name": "NOVY BYDZOV (1000ft AGL–FL125)",
     "lat": 50.22889,
     "lon": 15.56167,
     "type": "tra",
@@ -5156,7 +5156,7 @@
   },
   {
     "icao": "LKTRA57",
-    "name": "VAMBERK",
+    "name": "VAMBERK (3000ft–FL125)",
     "lat": 50.19292,
     "lon": 16.14778,
     "type": "tra",
@@ -5182,7 +5182,7 @@
   },
   {
     "icao": "LKTRA61",
-    "name": "KOPIDLNO",
+    "name": "KOPIDLNO (GND–3000ft)",
     "lat": 50.31417,
     "lon": 15.15944,
     "type": "tra",
@@ -5244,7 +5244,7 @@
   },
   {
     "icao": "LKTRA62",
-    "name": "NYMBURK",
+    "name": "NYMBURK (3000ft–FL245)",
     "lat": 50.09583,
     "lon": 14.26556,
     "type": "tra",
@@ -5286,7 +5286,7 @@
   },
   {
     "icao": "LKTRA71",
-    "name": "SMIDARY",
+    "name": "SMIDARY (GND–1000ft AGL)",
     "lat": 50.22014,
     "lon": 15.59556,
     "type": "tra",
@@ -5320,7 +5320,7 @@
   },
   {
     "icao": "LKTRA72",
-    "name": "OPOCNO",
+    "name": "OPOCNO (GND–3000ft)",
     "lat": 50.21708,
     "lon": 16.14167,
     "type": "tra",
@@ -5350,7 +5350,7 @@
   },
   {
     "icao": "LKTRA73",
-    "name": "BOROHRADEK",
+    "name": "BOROHRADEK (GND–2500ft)",
     "lat": 50.06139,
     "lon": 16.18223,
     "type": "tra",
@@ -5380,7 +5380,7 @@
   },
   {
     "icao": "LKTRA74",
-    "name": "VOLARY",
+    "name": "VOLARY (1000ft AGL–FL95)",
     "lat": 48.96737,
     "lon": 14.16973,
     "type": "tra",
@@ -5422,7 +5422,7 @@
   },
   {
     "icao": "LKTRA76",
-    "name": "BLATNA",
+    "name": "BLATNA (1000ft AGL–FL75)",
     "lat": 49.51584,
     "lon": 13.99209,
     "type": "tra",
@@ -5452,7 +5452,7 @@
   },
   {
     "icao": "LKTRA77",
-    "name": "MILEVSKO",
+    "name": "MILEVSKO (1000ft AGL–FL245)",
     "lat": 49.38334,
     "lon": 14.25556,
     "type": "tra",
@@ -5486,7 +5486,7 @@
   },
   {
     "icao": "LKTRA78",
-    "name": "SOBESLAV",
+    "name": "SOBESLAV (1000ft AGL–FL245)",
     "lat": 49.2232,
     "lon": 14.54945,
     "type": "tra",
@@ -5528,7 +5528,7 @@
   },
   {
     "icao": "LKTRA93",
-    "name": "PREROV",
+    "name": "PREROV (4000ft–FL75)",
     "lat": 49.42583,
     "lon": 17.40472,
     "type": "tra",
@@ -5590,7 +5590,7 @@
   },
   {
     "icao": "LKTRA94",
-    "name": "PIVIN",
+    "name": "PIVIN (3500ft–FL95)",
     "lat": 49.44778,
     "lon": 17.13389,
     "type": "tra",
@@ -5624,7 +5624,7 @@
   },
   {
     "icao": "LKTRA95",
-    "name": "PRASLAVICE",
+    "name": "PRASLAVICE (3500ft–FL125)",
     "lat": 49.42583,
     "lon": 17.40472,
     "type": "tra",
@@ -5666,7 +5666,7 @@
   },
   {
     "icao": "LKTRA18",
-    "name": "NAMEST",
+    "name": "NAMEST (FL95–FL125)",
     "lat": 49.10417,
     "lon": 16.16417,
     "type": "tra",
@@ -5728,7 +5728,7 @@
   },
   {
     "icao": "LKTRA19",
-    "name": "TREBIC",
+    "name": "TREBIC (FL125–FL245)",
     "lat": 49.09111,
     "lon": 15.92181,
     "type": "tra",
@@ -5806,7 +5806,7 @@
   },
   {
     "icao": "LKTRA30",
-    "name": "CASLAV",
+    "name": "CASLAV (FL95–FL245)",
     "lat": 49.8975,
     "lon": 15.44889,
     "type": "tra",
@@ -5864,7 +5864,7 @@
   },
   {
     "icao": "LKTRA35",
-    "name": "SUMPERK",
+    "name": "SUMPERK (FL95–FL245)",
     "lat": 50.02695,
     "lon": 16.79,
     "type": "tra",
@@ -5906,7 +5906,7 @@
   },
   {
     "icao": "LKTRA36",
-    "name": "HOLICE",
+    "name": "HOLICE (FL125–FL245)",
     "lat": 50.11459,
     "lon": 15.87375,
     "type": "tra",
@@ -5956,7 +5956,7 @@
   },
   {
     "icao": "LKTRA37",
-    "name": "NOVA PAKA",
+    "name": "NOVA PAKA (FL95–FL660)",
     "lat": 50.41764,
     "lon": 15.75125,
     "type": "tra",
@@ -6018,7 +6018,7 @@
   },
   {
     "icao": "LKTRA38",
-    "name": "HABRY",
+    "name": "HABRY (FL245–FL660)",
     "lat": 49.79264,
     "lon": 15.39556,
     "type": "tra",
@@ -6052,7 +6052,7 @@
   },
   {
     "icao": "LKTRA63",
-    "name": "PARDUBICE",
+    "name": "PARDUBICE (FL95–FL125)",
     "lat": 49.99806,
     "lon": 15.87375,
     "type": "tra",
@@ -6098,7 +6098,7 @@
   },
   {
     "icao": "LKTRA75",
-    "name": "PRACHATICE",
+    "name": "PRACHATICE (FL95–FL245)",
     "lat": 49.07084,
     "lon": 14.15181,
     "type": "tra",
@@ -6140,7 +6140,7 @@
   },
   {
     "icao": "LKTRA79",
-    "name": "HOSIN",
+    "name": "HOSIN (FL95–FL245)",
     "lat": 48.98834,
     "lon": 14.52139,
     "type": "tra",
