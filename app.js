@@ -105,30 +105,6 @@ function screenToSVG(clientX, clientY) {
 function initZoomPan() {
   const svg = document.getElementById('map');
 
-  // Wheel zoom
-  svg.addEventListener('wheel', (e) => {
-    e.preventDefault();
-    const pt = screenToSVG(e.clientX, e.clientY);
-    const factor = e.deltaY > 0 ? 1.15 : 0.87;
-    zoomAt(pt.x, pt.y, factor);
-  }, { passive: false });
-
-  // Mouse pan
-  svg.addEventListener('mousedown', (e) => {
-    if (e.button !== 0) return;
-    isPanning = true;
-    panStart = screenToSVG(e.clientX, e.clientY);
-  });
-  svg.addEventListener('mousemove', (e) => {
-    if (!isPanning) return;
-    const pt = screenToSVG(e.clientX, e.clientY);
-    viewBox.x -= pt.x - panStart.x;
-    viewBox.y -= pt.y - panStart.y;
-    applyViewBox();
-  });
-  svg.addEventListener('mouseup', () => { isPanning = false; });
-  svg.addEventListener('mouseleave', () => { isPanning = false; });
-
   // Touch pinch zoom + pan
   svg.addEventListener('touchstart', (e) => {
     if (e.touches.length === 2) {
