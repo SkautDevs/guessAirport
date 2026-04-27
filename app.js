@@ -17,6 +17,10 @@ const COLORS = {
   labelBg: '#fdf6e3'
 };
 
+function typeColor(type) {
+  return COLORS[type] || COLORS.airport;
+}
+
 const STROKE = {
   border: 2.5,
   grid: 0.5,
@@ -33,6 +37,10 @@ const CIRCLE_RADIUS_NM = {
 };
 const ROUNDS_PER_GAME = 10;
 const FEEDBACK_DELAY_MS = 3000;
+
+// --- DOM Cache (populated in init) ---
+
+const DOM = {};
 
 // --- Projection ---
 
@@ -74,10 +82,10 @@ let pinchStartDist = 0;
 let pinchStartVB = null;
 
 function applyViewBox() {
-  const svg = document.getElementById('map');
+  const svg = DOM['map'];
   svg.setAttribute('viewBox', `${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`);
   const zoomed = viewBox.w < SVG_WIDTH - 1;
-  document.getElementById('reset-zoom').style.display = zoomed ? 'block' : 'none';
+  DOM['reset-zoom'].style.display = zoomed ? 'block' : 'none';
 }
 
 function resetZoom() {
@@ -97,13 +105,13 @@ function zoomAt(cx, cy, factor) {
 }
 
 function screenToSVG(clientX, clientY) {
-  const svg = document.getElementById('map');
+  const svg = DOM['map'];
   const pt = new DOMPoint(clientX, clientY);
   return pt.matrixTransform(svg.getScreenCTM().inverse());
 }
 
 function initZoomPan() {
-  const svg = document.getElementById('map');
+  const svg = DOM['map'];
 
   // Touch pinch zoom + pan
   svg.addEventListener('touchstart', (e) => {
@@ -150,7 +158,7 @@ function initZoomPan() {
     pinchStartVB = null;
   });
 
-  document.getElementById('reset-zoom').addEventListener('click', resetZoom);
+  DOM['reset-zoom'].addEventListener('click', resetZoom);
 }
 
 function nmToPixels(nm) {
@@ -188,7 +196,7 @@ function ctrToSVGPoints(ctr) {
 // --- Border Rendering ---
 
 function renderBorder(borderCoords) {
-  const layer = document.getElementById('border-layer');
+  const layer = DOM['border-layer'];
 
   for (let lat = 49; lat <= 51; lat++) {
     const left = lonLatToXY(CZ_BOUNDS.minLon, lat);
@@ -256,17 +264,14 @@ function renderRunways(g, airport) {
   });
 }
 
+const SPECIAL_TYPES = new Set(['prohibited', 'restricted', 'tra']);
+
 function renderCTR(g, airport) {
-  const isSpecial = airport.type === 'prohibited' || airport.type === 'restricted' || airport.type === 'tra';
-  const color = airport.type === 'prohibited' ? COLORS.prohibited
-    : airport.type === 'restricted' ? COLORS.restricted
-    : airport.type === 'tra' ? COLORS.tra
-    : COLORS.airport;
-  const fillOpacity = isSpecial ? '0.08' : '0.06';
+  const color = typeColor(airport.type);
 
   g.appendChild(svgEl('polygon', {
     points: ctrToSVGPoints(airport.ctr),
-    fill: color, 'fill-opacity': fillOpacity,
+    fill: color, 'fill-opacity': SPECIAL_TYPES.has(airport.type) ? '0.08' : '0.06',
     stroke: color,
     'stroke-width': STROKE.ctr,
     'stroke-dasharray': '6,3'
@@ -317,7 +322,7 @@ function renderVOR(g, airport) {
 }
 
 function renderAirports(airports) {
-  const layer = document.getElementById('airport-layer');
+  const layer = DOM['airport-layer'];
   layer.innerHTML = '';
 
   airports.forEach(airport => {
@@ -465,8 +470,8 @@ function weightedPick(pool, count) {
 function startGame() {
   const checked = [...document.querySelectorAll('#custom-checks input:checked')].map(cb => cb.value);
   if (checked.length === 0) return;
-  browseMode = document.getElementById('browse-mode').checked;
-  const infinityMode = document.getElementById('infinity-mode').checked;
+  browseMode = DOM['browse-mode'].checked;
+  const infinityMode = DOM['infinity-mode'].checked;
 
   localStorage.setItem('guessAirport_settings', JSON.stringify({
     categories: checked, browse: browseMode, infinity: infinityMode
@@ -481,10 +486,10 @@ function startGame() {
 
   renderAirports(currentPool);
 
-  document.getElementById('start-screen').classList.add('hidden');
-  document.getElementById('summary-screen').classList.add('hidden');
-  document.getElementById('question-bar').classList.remove('hidden');
-  document.getElementById('sidebar').classList.remove('hidden');
+  DOM['start-screen'].classList.add('hidden');
+  DOM['summary-screen'].classList.add('hidden');
+  DOM['question-bar'].classList.remove('hidden');
+  DOM['sidebar'].classList.remove('hidden');
 
   renderScoreSheet();
   showCurrentQuestion();
@@ -492,16 +497,16 @@ function startGame() {
 
 function showCurrentQuestion() {
   const airport = roundAirports[currentRound];
-  document.getElementById('round-counter').textContent = `Kolo ${currentRound + 1}/${roundAirports.length}`;
+  DOM['round-counter'].textContent = `Kolo ${currentRound + 1}/${roundAirports.length}`;
 
-  document.getElementById('question-text').innerHTML =
+  DOM['question-text'].innerHTML =
     `Najdi: <span class="icao">${airport.icao}</span> — ${airport.name}`;
 }
 
 // --- Score Sheet ---
 
 function renderScoreSheet() {
-  const list = document.getElementById('score-list');
+  const list = DOM['score-list'];
   list.innerHTML = '';
 
   roundAirports.forEach((airport, i) => {
@@ -520,7 +525,7 @@ function renderScoreSheet() {
   });
 
   const correctCount = results.filter(r => r.correct).length;
-  document.getElementById('score-total').textContent = `Skóre: ${correctCount}/${results.length}`;
+  DOM['score-total'].textContent = `Skóre: ${correctCount}/${results.length}`;
 }
 
 // --- Feedback ---
@@ -565,7 +570,7 @@ function labelAirport(layer, airport, color) {
 
 function showFeedback(targetAirport, correct, clickedAirport) {
   gameState = 'feedback';
-  const feedbackLayer = document.getElementById('feedback-layer');
+  const feedbackLayer = DOM['feedback-layer'];
   feedbackLayer.innerHTML = '';
 
   if (correct) {
@@ -634,12 +639,12 @@ function advanceRound() {
 
 function showSummary() {
   gameState = 'summary';
-  document.getElementById('question-bar').classList.add('hidden');
+  DOM['question-bar'].classList.add('hidden');
 
   const correctCount = results.filter(r => r.correct).length;
-  document.getElementById('final-score').textContent = `${correctCount} / ${roundAirports.length}`;
+  DOM['final-score'].textContent = `${correctCount} / ${roundAirports.length}`;
 
-  const list = document.getElementById('summary-list');
+  const list = DOM['summary-list'];
   list.innerHTML = '';
   results.forEach((r, i) => {
     const li = document.createElement('li');
@@ -649,7 +654,7 @@ function showSummary() {
   });
 
   const missed = results.filter(r => !r.correct).map(r => r.airport);
-  const practiceBtn = document.getElementById('practice-missed');
+  const practiceBtn = DOM['practice-missed'];
   if (missed.length > 0) {
     practiceBtn.classList.remove('hidden');
     practiceBtn.textContent = `Procvičit ${missed.length} chybných`;
@@ -657,13 +662,13 @@ function showSummary() {
     practiceBtn.classList.add('hidden');
   }
 
-  document.getElementById('summary-screen').classList.remove('hidden');
+  DOM['summary-screen'].classList.remove('hidden');
 }
 
 // --- Easter Egg ---
 
 function showEasterEgg() {
-  const egg = document.getElementById('easter-egg');
+  const egg = DOM['easter-egg'];
   egg.innerHTML = `
     <img src="data/LeteckySkauting_Logo.jpg" alt="Letecký Skauting">
     <h2>🏠 Domovské letiště!</h2>
@@ -680,14 +685,24 @@ let borderData = [];
 let airportData = [];
 
 async function init() {
+  // Cache DOM elements
+  ['map', 'border-layer', 'airport-layer', 'feedback-layer',
+   'question-bar', 'round-counter', 'question-text',
+   'sidebar', 'sidebar-toggle', 'score-list', 'score-total',
+   'start-screen', 'summary-screen', 'final-score', 'summary-list',
+   'practice-missed', 'play-again', 'start-btn', 'reset-progress',
+   'reset-zoom', 'easter-egg', 'browse-mode', 'infinity-mode'
+  ].forEach(id => { DOM[id] = document.getElementById(id); });
+
   try {
     borderData = await loadJSON('data/border.json');
     airportData = await loadJSON('data/airports.json');
   } catch (err) {
-    document.getElementById('start-screen').innerHTML =
+    DOM['start-screen'].innerHTML =
       '<h1>Nepodařilo se načíst data</h1><p>Spusťte přes lokální HTTP server (např. python3 -m http.server)</p>';
     return;
   }
+
   loadWeights();
   renderBorder(borderData);
   renderAirports(airportData);
@@ -698,8 +713,8 @@ async function init() {
     document.querySelectorAll('#custom-checks input[type="checkbox"]').forEach(cb => {
       cb.checked = saved.categories?.includes(cb.value) ?? false;
     });
-    document.getElementById('browse-mode').checked = saved.browse ?? false;
-    document.getElementById('infinity-mode').checked = saved.infinity ?? false;
+    DOM['browse-mode'].checked = saved.browse ?? false;
+    DOM['infinity-mode'].checked = saved.infinity ?? false;
   }
 
   // Show counts per category
@@ -708,19 +723,19 @@ async function init() {
     cb.parentElement.append(` (${count})`);
   });
 
-  document.getElementById('start-btn').addEventListener('click', startGame);
+  DOM['start-btn'].addEventListener('click', startGame);
 
-  document.getElementById('map').addEventListener('mousedown', handleMapMouseDown);
-  document.getElementById('map').addEventListener('click', handleMapClick);
+  DOM['map'].addEventListener('mousedown', handleMapMouseDown);
+  DOM['map'].addEventListener('click', handleMapClick);
   initZoomPan();
 
-  document.getElementById('play-again').addEventListener('click', () => {
-    document.getElementById('summary-screen').classList.add('hidden');
-    document.getElementById('start-screen').classList.remove('hidden');
-    document.getElementById('sidebar').classList.add('hidden');
+  DOM['play-again'].addEventListener('click', () => {
+    DOM['summary-screen'].classList.add('hidden');
+    DOM['start-screen'].classList.remove('hidden');
+    DOM['sidebar'].classList.add('hidden');
   });
 
-  document.getElementById('reset-progress').addEventListener('click', (e) => {
+  DOM['reset-progress'].addEventListener('click', (e) => {
     e.preventDefault();
     if (confirm('Smazat veškerý postup učení?')) {
       localStorage.removeItem('guessAirport_weights');
@@ -730,17 +745,17 @@ async function init() {
     }
   });
 
-  document.getElementById('sidebar-toggle').addEventListener('click', () => {
-    document.getElementById('sidebar').classList.toggle('expanded');
-    const toggle = document.getElementById('sidebar-toggle');
+  DOM['sidebar-toggle'].addEventListener('click', () => {
+    DOM['sidebar'].classList.toggle('expanded');
+    const toggle = DOM['sidebar-toggle'];
     toggle.classList.toggle('active');
     toggle.textContent = toggle.classList.contains('active') ? '◀ Skóre' : 'Skóre ▶';
   });
 
-  document.getElementById('practice-missed').addEventListener('click', () => {
+  DOM['practice-missed'].addEventListener('click', () => {
     const missed = results.filter(r => !r.correct).map(r => r.airport);
-    document.getElementById('summary-screen').classList.add('hidden');
-    document.getElementById('question-bar').classList.remove('hidden');
+    DOM['summary-screen'].classList.add('hidden');
+    DOM['question-bar'].classList.remove('hidden');
     roundAirports = shuffleArray(missed);
     currentRound = 0;
     results = [];
