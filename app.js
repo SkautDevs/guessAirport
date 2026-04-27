@@ -325,6 +325,11 @@ function startGame() {
   if (checked.length === 0) return;
   learningMode = document.getElementById('learning-mode').checked;
   const infinityMode = document.getElementById('infinity-mode').checked;
+
+  localStorage.setItem('guessAirport_settings', JSON.stringify({
+    categories: checked, learning: learningMode, infinity: infinityMode
+  }));
+
   currentPool = airportData.filter(a => checked.includes(a.type));
   const roundCount = infinityMode ? currentPool.length : Math.min(ROUNDS_PER_GAME, currentPool.length);
   roundAirports = shuffleArray(currentPool).slice(0, roundCount);
@@ -507,6 +512,16 @@ async function init() {
   }
   renderBorder(borderData);
   renderAirports(airportData);
+
+  // Restore saved checkbox state
+  const saved = JSON.parse(localStorage.getItem('guessAirport_settings') || 'null');
+  if (saved) {
+    document.querySelectorAll('#custom-checks input[type="checkbox"]').forEach(cb => {
+      cb.checked = saved.categories?.includes(cb.value) ?? false;
+    });
+    document.getElementById('learning-mode').checked = saved.learning ?? false;
+    document.getElementById('infinity-mode').checked = saved.infinity ?? false;
+  }
 
   // Show counts per category
   document.querySelectorAll('#custom-checks input[type="checkbox"]').forEach(cb => {
