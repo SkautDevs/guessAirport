@@ -117,8 +117,11 @@ body {
     right: 0;
   }
 
+}
+
+@media (max-height: 700px) {
   #scout-logo {
-    width: 150px;
+    width: 60px;
   }
 }
 
@@ -292,7 +295,7 @@ input[type="checkbox"] {
   position: fixed;
   bottom: 12px;
   left: 12px;
-  width: 240px;
+  width: min(240px, 15vw);
   height: auto;
   opacity: 1;
   z-index: 25;
