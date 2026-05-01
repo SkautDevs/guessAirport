@@ -1,10 +1,9 @@
-import { renderAirports, highlightAirport, labelAirport, renderBorder } from './render.js';
+import { renderAirports, highlightAirport, labelAirport } from './render.js';
 import { findClickedAirport } from './hit.js';
 import { screenToSVG } from './projection.js';
 import { COLORS } from './types.js';
 import { saveSettings, loadSettings, clearWeights } from './storage.js';
 import { startGame, recordGuess, advanceRound, startPracticeMissed } from './game.js';
-import { shuffleArray } from './weights.js';
 
 const FEEDBACK_DELAY_MS = 3000;
 
