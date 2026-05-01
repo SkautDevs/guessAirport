@@ -49,6 +49,3 @@ export async function loadJSON(url) {
   const res = await fetch(url);
   return res.json();
 }
-
-// Exported for tests
-export const _internal = { readVersioned, writeVersioned, VERSION };
