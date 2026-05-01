@@ -46,23 +46,27 @@ export function showCurrentQuestion(game) {
     : `Najdi: <span class="icao">${airport.icao}</span> — ${airport.name}`;
 }
 
-export function showEasterEgg() {
+const HOME_ICAO = 'LKMB';
+
+export function showEasterEgg(airport) {
   const egg = DOM['easter-egg'];
   egg.innerHTML = `
     <img src="data/LeteckySkauting_Logo.jpg" alt="Letecký Skauting">
     <h2>🏠 Domovské letiště!</h2>
-    <p>LKMB — Mladá Boleslav</p>
+    <p>${airport.icao} — ${airport.name}</p>
     <p class="subtitle">Základna Leteckého Skautingu</p>
   `;
   egg.classList.remove('hidden');
   setTimeout(() => egg.classList.add('hidden'), 4000);
 }
 
+export { HOME_ICAO };
+
 export function showFeedback(game, targetAirport, correct, clickedAirport, onDone) {
   const feedbackLayer = DOM['feedback-layer'];
   feedbackLayer.innerHTML = '';
   if (correct) {
-    if (targetAirport.icao === 'LKMB') showEasterEgg();
+    if (targetAirport.icao === HOME_ICAO) showEasterEgg(targetAirport);
     highlightAirport(feedbackLayer, targetAirport, COLORS.correct, 3);
   } else {
     if (clickedAirport) {
