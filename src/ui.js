@@ -60,8 +60,6 @@ export function showEasterEgg(airport) {
   setTimeout(() => egg.classList.add('hidden'), 4000);
 }
 
-export { HOME_ICAO };
-
 export function showFeedback(game, targetAirport, correct, clickedAirport, onDone) {
   const feedbackLayer = DOM['feedback-layer'];
   feedbackLayer.innerHTML = '';
