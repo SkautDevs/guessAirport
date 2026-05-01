@@ -2,16 +2,34 @@ const KEY_WEIGHTS = 'guessAirport_weights';
 const KEY_SEEN = 'guessAirport_seen';
 const KEY_SETTINGS = 'guessAirport_settings';
 
+const VERSION = 1;
+
+function readVersioned(key) {
+  const raw = localStorage.getItem(key);
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object' || parsed.v !== VERSION) return null;
+    return parsed.data;
+  } catch {
+    return null;
+  }
+}
+
+function writeVersioned(key, data) {
+  localStorage.setItem(key, JSON.stringify({ v: VERSION, data }));
+}
+
 export function loadWeights() {
   return {
-    weights: JSON.parse(localStorage.getItem(KEY_WEIGHTS) || '{}'),
-    seen: new Set(JSON.parse(localStorage.getItem(KEY_SEEN) || '[]'))
+    weights: readVersioned(KEY_WEIGHTS) || {},
+    seen: new Set(readVersioned(KEY_SEEN) || [])
   };
 }
 
 export function saveWeights(weights, seen) {
-  localStorage.setItem(KEY_WEIGHTS, JSON.stringify(weights));
-  localStorage.setItem(KEY_SEEN, JSON.stringify([...seen]));
+  writeVersioned(KEY_WEIGHTS, weights);
+  writeVersioned(KEY_SEEN, [...seen]);
 }
 
 export function clearWeights() {
@@ -20,14 +38,17 @@ export function clearWeights() {
 }
 
 export function loadSettings() {
-  return JSON.parse(localStorage.getItem(KEY_SETTINGS) || 'null');
+  return readVersioned(KEY_SETTINGS);
 }
 
 export function saveSettings(settings) {
-  localStorage.setItem(KEY_SETTINGS, JSON.stringify(settings));
+  writeVersioned(KEY_SETTINGS, settings);
 }
 
 export async function loadJSON(url) {
   const res = await fetch(url);
   return res.json();
 }
+
+// Exported for tests
+export const _internal = { readVersioned, writeVersioned, VERSION };
