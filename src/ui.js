@@ -104,19 +104,8 @@ export function showSummary(game) {
 }
 
 export function wireListeners(game, airportData) {
-  let mouseDownPos = null;
-
-  DOM['map'].addEventListener('mousedown', (e) => {
-    mouseDownPos = { x: e.clientX, y: e.clientY };
-  });
-
   DOM['map'].addEventListener('click', (e) => {
     if (game.state !== 'playing') return;
-    if (mouseDownPos) {
-      const dx = e.clientX - mouseDownPos.x;
-      const dy = e.clientY - mouseDownPos.y;
-      if (dx * dx + dy * dy > 25) return;
-    }
     const svgPt = screenToSVG(DOM['map'], e.clientX, e.clientY);
     const targetAirport = game.currentTarget;
     const clickedAirport = findClickedAirport(svgPt.x, svgPt.y, game.currentPool, targetAirport);
