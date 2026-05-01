@@ -74,23 +74,20 @@ function renderRunways(g, airport) {
   });
 }
 
-function renderCTR(g, airport) {
+function drawShape(layer, airport, { fill, stroke, strokeWidth, fillOp, strokeDash }) {
   const t = typeOf(airport);
-  g.appendChild(svgEl('polygon', {
-    points: ctrToSVGPoints(airport),
-    fill: t.color, 'fill-opacity': t.fillOp ?? 0.06,
-    stroke: t.color,
-    'stroke-width': STROKE.ctr,
-    'stroke-dasharray': '6,3'
-  }));
-}
-
-function renderCircle(g, airport) {
-  const width = airport.type === 'ultralight' ? STROKE.circleUL : STROKE.circle;
-  g.appendChild(svgEl('circle', {
-    cx: airport.cx, cy: airport.cy, r: airport.pxRadius,
-    fill: 'none', stroke: COLORS.airport, 'stroke-width': width
-  }));
+  const attrs = { fill, stroke, 'stroke-width': strokeWidth };
+  if (fillOp !== undefined) attrs['fill-opacity'] = fillOp;
+  if (strokeDash) attrs['stroke-dasharray'] = strokeDash;
+  if (t.shape === 'ctr' && airport.ctrPoints) {
+    attrs.points = ctrToSVGPoints(airport);
+    layer.appendChild(svgEl('polygon', attrs));
+  } else {
+    attrs.cx = airport.cx;
+    attrs.cy = airport.cy;
+    attrs.r = t.hitRadiusPx ?? airport.pxRadius;
+    layer.appendChild(svgEl('circle', attrs));
+  }
 }
 
 function renderVOR(g, airport) {
@@ -124,13 +121,19 @@ export function renderAirports(layer, airports, browseMode) {
   layer.innerHTML = '';
   airports.forEach(airport => {
     const g = svgEl('g', { 'data-icao': airport.icao, class: 'airport-symbol' });
-    const shape = typeOf(airport).shape;
-    if (shape === 'vor') {
+    const t = typeOf(airport);
+    if (t.shape === 'vor') {
       renderVOR(g, airport);
-    } else if (shape === 'ctr' && airport.ctrPoints) {
-      renderCTR(g, airport);
     } else {
-      renderCircle(g, airport);
+      const isCTR = t.shape === 'ctr' && airport.ctrPoints;
+      const isUL = airport.type === 'ultralight';
+      drawShape(g, airport, {
+        fill: isCTR ? t.color : 'none',
+        stroke: isCTR ? t.color : COLORS.airport,
+        strokeWidth: isCTR ? STROKE.ctr : (isUL ? STROKE.circleUL : STROKE.circle),
+        fillOp: isCTR ? (t.fillOp ?? 0.06) : undefined,
+        strokeDash: isCTR ? '6,3' : undefined,
+      });
     }
     if (airport.runways.length > 0) renderRunways(g, airport);
     if (browseMode) {
@@ -146,19 +149,12 @@ export function renderAirports(layer, airports, browseMode) {
   });
 }
 
-export function highlightAirport(layer, airport, color, width) {
-  const fill = `${color}33`;
-  const t = typeOf(airport);
-  if (t.shape === 'ctr' && airport.ctrPoints) {
-    layer.appendChild(svgEl('polygon', {
-      points: ctrToSVGPoints(airport), fill, stroke: color, 'stroke-width': width
-    }));
-  } else {
-    const r = t.hitRadiusPx ?? airport.pxRadius;
-    layer.appendChild(svgEl('circle', {
-      cx: airport.cx, cy: airport.cy, r, fill, stroke: color, 'stroke-width': width
-    }));
-  }
+export function highlightAirport(layer, airport, color, strokeWidth) {
+  drawShape(layer, airport, {
+    fill: `${color}33`,
+    stroke: color,
+    strokeWidth,
+  });
 }
 
 export function labelAirport(layer, airport, color) {
