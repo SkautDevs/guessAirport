@@ -1,5 +1,5 @@
 import { lonLatToXY, CZ_BOUNDS } from './projection.js';
-import { COLORS, STROKE, typeOf, typeColor } from './types.js';
+import { COLORS, STROKE, typeOf } from './types.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 

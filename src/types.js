@@ -42,7 +42,3 @@ export const TYPES = {
 export function typeOf(airport) {
   return TYPES[airport.type] || TYPES.large;
 }
-
-export function typeColor(type) {
-  return (TYPES[type] && TYPES[type].color) || COLORS.airport;
-}
