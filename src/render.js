@@ -1,5 +1,5 @@
 import { lonLatToXY, CZ_BOUNDS } from './projection.js';
-import { COLORS, STROKE, SPECIAL_TYPES, typeColor } from './types.js';
+import { COLORS, STROKE, typeOf, typeColor } from './types.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
@@ -75,11 +75,11 @@ function renderRunways(g, airport) {
 }
 
 function renderCTR(g, airport) {
-  const color = typeColor(airport.type);
+  const t = typeOf(airport);
   g.appendChild(svgEl('polygon', {
     points: ctrToSVGPoints(airport),
-    fill: color, 'fill-opacity': SPECIAL_TYPES.has(airport.type) ? '0.08' : '0.06',
-    stroke: color,
+    fill: t.color, 'fill-opacity': t.fillOp ?? 0.06,
+    stroke: t.color,
     'stroke-width': STROKE.ctr,
     'stroke-dasharray': '6,3'
   }));
@@ -124,9 +124,10 @@ export function renderAirports(layer, airports, browseMode) {
   layer.innerHTML = '';
   airports.forEach(airport => {
     const g = svgEl('g', { 'data-icao': airport.icao, class: 'airport-symbol' });
-    if (airport.type === 'vor') {
+    const shape = typeOf(airport).shape;
+    if (shape === 'vor') {
       renderVOR(g, airport);
-    } else if (airport.ctr) {
+    } else if (shape === 'ctr' && airport.ctrPoints) {
       renderCTR(g, airport);
     } else {
       renderCircle(g, airport);
@@ -147,12 +148,13 @@ export function renderAirports(layer, airports, browseMode) {
 
 export function highlightAirport(layer, airport, color, width) {
   const fill = `${color}33`;
-  if (airport.ctrPoints) {
+  const t = typeOf(airport);
+  if (t.shape === 'ctr' && airport.ctrPoints) {
     layer.appendChild(svgEl('polygon', {
       points: ctrToSVGPoints(airport), fill, stroke: color, 'stroke-width': width
     }));
   } else {
-    const r = airport.type === 'vor' ? 14 : airport.pxRadius;
+    const r = t.hitRadiusPx ?? airport.pxRadius;
     layer.appendChild(svgEl('circle', {
       cx: airport.cx, cy: airport.cy, r, fill, stroke: color, 'stroke-width': width
     }));

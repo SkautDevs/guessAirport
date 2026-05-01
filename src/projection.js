@@ -1,4 +1,4 @@
-import { CIRCLE_RADIUS_NM } from './types.js';
+import { typeOf } from './types.js';
 
 export const CZ_BOUNDS = {
   minLon: 12.09, maxLon: 18.86,
@@ -34,8 +34,10 @@ export function screenToSVG(svg, clientX, clientY) {
 }
 
 function airportRadiusPx(airport) {
-  const nm = CIRCLE_RADIUS_NM[airport.type] || 5;
-  return nmToPixels(nm);
+  const t = typeOf(airport);
+  if (t.radiusNM) return nmToPixels(t.radiusNM);
+  if (t.hitRadiusPx) return t.hitRadiusPx;
+  return nmToPixels(5);
 }
 
 export function enrichAirports(airports) {

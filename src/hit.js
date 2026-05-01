@@ -1,3 +1,5 @@
+import { typeOf } from './types.js';
+
 export function pointInPolygon(x, y, polygon) {
   let inside = false;
   for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
@@ -15,11 +17,12 @@ export function isClickOnAirport(clickX, clickY, airport) {
   const dx = clickX - airport.cx;
   const dy = clickY - airport.cy;
   const distSq = dx * dx + dy * dy;
-  if (airport.ctrPoints) {
+  const t = typeOf(airport);
+  if (t.shape === 'ctr' && airport.ctrPoints) {
     return pointInPolygon(clickX, clickY, airport.ctrPoints)
       || distSq <= MIN_CLICK_RADIUS * MIN_CLICK_RADIUS;
   }
-  const r = airport.type === 'vor' ? 14 : airport.pxRadius;
+  const r = t.hitRadiusPx ?? airport.pxRadius;
   const clickR = Math.max(r, MIN_CLICK_RADIUS);
   return distSq <= clickR * clickR;
 }

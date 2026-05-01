@@ -21,13 +21,28 @@ export const STROKE = {
   circleUL: 0.8
 };
 
-export const CIRCLE_RADIUS_NM = {
-  'small-north': 3, 'small-west': 3, 'small-south': 3, 'small-east': 3,
-  ultralight: 2
+// Per-type configuration. shape: 'ctr' | 'circle' | 'vor'.
+// hitRadiusPx is used when shape is not 'ctr' (overrides pxRadius).
+// radiusNM (when set) is the click/draw radius in nautical miles for circle types.
+// fillOp applies to CTR polygons.
+export const TYPES = {
+  large:         { color: COLORS.airport,    shape: 'ctr',    fillOp: 0.06 },
+  medium:        { color: COLORS.airport,    shape: 'ctr',    fillOp: 0.06 },
+  'small-north': { color: COLORS.airport,    shape: 'circle', radiusNM: 3 },
+  'small-west':  { color: COLORS.airport,    shape: 'circle', radiusNM: 3 },
+  'small-south': { color: COLORS.airport,    shape: 'circle', radiusNM: 3 },
+  'small-east':  { color: COLORS.airport,    shape: 'circle', radiusNM: 3 },
+  ultralight:    { color: COLORS.airport,    shape: 'circle', radiusNM: 2 },
+  vor:           { color: COLORS.vor,        shape: 'vor',    hitRadiusPx: 14 },
+  prohibited:    { color: COLORS.prohibited, shape: 'ctr',    fillOp: 0.08 },
+  restricted:    { color: COLORS.restricted, shape: 'ctr',    fillOp: 0.08 },
+  tra:           { color: COLORS.tra,        shape: 'ctr',    fillOp: 0.08 },
 };
 
-export const SPECIAL_TYPES = new Set(['prohibited', 'restricted', 'tra']);
+export function typeOf(airport) {
+  return TYPES[airport.type] || TYPES.large;
+}
 
 export function typeColor(type) {
-  return COLORS[type] || COLORS.airport;
+  return (TYPES[type] && TYPES[type].color) || COLORS.airport;
 }
