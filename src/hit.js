@@ -1,15 +1,3 @@
-import { lonLatToXY, nmToPixels } from './projection.js';
-import { CIRCLE_RADIUS_NM } from './types.js';
-
-export function airportRadius(airport) {
-  const nm = CIRCLE_RADIUS_NM[airport.type] || 5;
-  return nmToPixels(nm);
-}
-
-export function ctrToMapPoints(ctr) {
-  return ctr.map(([lat, lon]) => lonLatToXY(lon, lat));
-}
-
 export function pointInPolygon(x, y, polygon) {
   let inside = false;
   for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
@@ -24,16 +12,14 @@ export function pointInPolygon(x, y, polygon) {
 const MIN_CLICK_RADIUS = 15;
 
 export function isClickOnAirport(clickX, clickY, airport) {
-  const center = lonLatToXY(airport.lon, airport.lat);
-  const dx = clickX - center.x;
-  const dy = clickY - center.y;
+  const dx = clickX - airport.cx;
+  const dy = clickY - airport.cy;
   const distSq = dx * dx + dy * dy;
-
-  if (airport.ctr) {
-    return pointInPolygon(clickX, clickY, ctrToMapPoints(airport.ctr))
+  if (airport.ctrPoints) {
+    return pointInPolygon(clickX, clickY, airport.ctrPoints)
       || distSq <= MIN_CLICK_RADIUS * MIN_CLICK_RADIUS;
   }
-  const r = airport.type === 'vor' ? 14 : airportRadius(airport);
+  const r = airport.type === 'vor' ? 14 : airport.pxRadius;
   const clickR = Math.max(r, MIN_CLICK_RADIUS);
   return distSq <= clickR * clickR;
 }

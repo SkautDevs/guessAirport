@@ -1,3 +1,5 @@
+import { CIRCLE_RADIUS_NM } from './types.js';
+
 export const CZ_BOUNDS = {
   minLon: 12.09, maxLon: 18.86,
   minLat: 48.55, maxLat: 51.06
@@ -29,4 +31,22 @@ export function nmToPixels(nm) {
 export function screenToSVG(svg, clientX, clientY) {
   const pt = new DOMPoint(clientX, clientY);
   return pt.matrixTransform(svg.getScreenCTM().inverse());
+}
+
+function airportRadiusPx(airport) {
+  const nm = CIRCLE_RADIUS_NM[airport.type] || 5;
+  return nmToPixels(nm);
+}
+
+export function enrichAirports(airports) {
+  for (const airport of airports) {
+    const c = lonLatToXY(airport.lon, airport.lat);
+    airport.cx = c.x;
+    airport.cy = c.y;
+    airport.pxRadius = airportRadiusPx(airport);
+    if (airport.ctr) {
+      airport.ctrPoints = airport.ctr.map(([lat, lon]) => lonLatToXY(lon, lat));
+    }
+  }
+  return airports;
 }

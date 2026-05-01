@@ -1,5 +1,6 @@
 import { loadJSON, loadWeights } from './storage.js';
 import { renderBorder, renderAirports } from './render.js';
+import { enrichAirports } from './projection.js';
 import { createGame } from './game.js';
 import { cacheDOM, DOM, wireListeners, restoreCheckboxState, showCategoryCounts } from './ui.js';
 
@@ -15,6 +16,8 @@ async function init() {
       '<h1>Nepodařilo se načíst data</h1><p>Spusťte přes lokální HTTP server (např. python3 -m http.server)</p>';
     return;
   }
+
+  enrichAirports(airportData);
 
   const { weights, seen } = loadWeights();
   const game = createGame(weights, seen);
