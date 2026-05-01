@@ -3,55 +3,72 @@ import { saveWeights } from './storage.js';
 
 export const ROUNDS_PER_GAME = 10;
 
-export function createGame(weights, seen) {
-  return {
-    state: 'start',
-    currentRound: 0,
-    currentPool: [],
-    roundAirports: [],
-    browseMode: false,
-    hardMode: false,
-    infinityMode: false,
-    results: [],
-    weights,
-    seen,
-  };
-}
+const STATES = ['start', 'playing', 'feedback', 'summary'];
 
-export function startGame(game, pool, options) {
-  game.browseMode = options.browseMode;
-  game.hardMode = options.hardMode;
-  game.infinityMode = options.infinityMode;
-  game.currentPool = pool;
-  const roundCount = options.infinityMode ? pool.length : Math.min(ROUNDS_PER_GAME, pool.length);
-  game.roundAirports = options.infinityMode ? shuffleArray(pool) : weightedPick(pool, roundCount, game.weights, game.seen);
-  game.currentRound = 0;
-  game.results = [];
-  game.state = 'playing';
-}
+export class Game {
+  constructor(weights, seen) {
+    this.state = 'start';
+    this.currentRound = 0;
+    this.currentPool = [];
+    this.roundAirports = [];
+    this.browseMode = false;
+    this.hardMode = false;
+    this.infinityMode = false;
+    this.results = [];
+    this.weights = weights;
+    this.seen = seen;
+  }
 
-export function recordGuess(game, targetAirport, clickedAirport) {
-  const correct = clickedAirport.icao === targetAirport.icao;
-  game.results.push({ airport: targetAirport, correct });
-  updateWeight(game.weights, game.seen, targetAirport.icao, correct);
-  saveWeights(game.weights, game.seen);
-  game.state = 'feedback';
-  return correct;
-}
+  start(pool, options) {
+    this.browseMode = options.browseMode;
+    this.hardMode = options.hardMode;
+    this.infinityMode = options.infinityMode;
+    this.currentPool = pool;
+    const roundCount = options.infinityMode ? pool.length : Math.min(ROUNDS_PER_GAME, pool.length);
+    this.roundAirports = options.infinityMode
+      ? shuffleArray(pool)
+      : weightedPick(pool, roundCount, this.weights, this.seen);
+    this.currentRound = 0;
+    this.results = [];
+    this.state = 'playing';
+  }
 
-export function advanceRound(game) {
-  game.currentRound++;
-  if (game.currentRound >= game.roundAirports.length) {
-    game.state = 'summary';
-  } else {
-    game.state = 'playing';
+  recordGuess(targetAirport, clickedAirport) {
+    if (this.state !== 'playing') return null;
+    const correct = clickedAirport.icao === targetAirport.icao;
+    this.results.push({ airport: targetAirport, correct });
+    updateWeight(this.weights, this.seen, targetAirport.icao, correct);
+    saveWeights(this.weights, this.seen);
+    this.state = 'feedback';
+    return correct;
+  }
+
+  advance() {
+    if (this.state !== 'feedback') return;
+    this.currentRound++;
+    this.state = this.currentRound >= this.roundAirports.length ? 'summary' : 'playing';
+  }
+
+  startPracticeMissed() {
+    const missed = this.results.filter(r => !r.correct).map(r => r.airport);
+    this.roundAirports = shuffleArray(missed);
+    this.currentRound = 0;
+    this.results = [];
+    this.state = 'playing';
+  }
+
+  resetProgress() {
+    this.weights = {};
+    this.seen = new Set();
+  }
+
+  get currentTarget() {
+    return this.roundAirports[this.currentRound];
+  }
+
+  get correctCount() {
+    return this.results.filter(r => r.correct).length;
   }
 }
 
-export function startPracticeMissed(game) {
-  const missed = game.results.filter(r => !r.correct).map(r => r.airport);
-  game.roundAirports = shuffleArray(missed);
-  game.currentRound = 0;
-  game.results = [];
-  game.state = 'playing';
-}
+export { STATES };

@@ -1,7 +1,7 @@
 import { loadJSON, loadWeights } from './storage.js';
 import { renderBorder, renderAirports } from './render.js';
 import { enrichAirports } from './projection.js';
-import { createGame } from './game.js';
+import { Game } from './game.js';
 import { cacheDOM, DOM, wireListeners, restoreCheckboxState, showCategoryCounts } from './ui.js';
 
 async function init() {
@@ -20,7 +20,7 @@ async function init() {
   enrichAirports(airportData);
 
   const { weights, seen } = loadWeights();
-  const game = createGame(weights, seen);
+  const game = new Game(weights, seen);
 
   renderBorder(DOM['border-layer'], borderData);
   renderAirports(DOM['airport-layer'], airportData, false);

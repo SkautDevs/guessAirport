@@ -3,7 +3,6 @@ import { findClickedAirport } from './hit.js';
 import { screenToSVG } from './projection.js';
 import { COLORS } from './types.js';
 import { saveSettings, loadSettings, clearWeights } from './storage.js';
-import { startGame, recordGuess, advanceRound, startPracticeMissed } from './game.js';
 
 const FEEDBACK_DELAY_MS = 3000;
 
@@ -36,12 +35,11 @@ export function renderScoreSheet(game) {
     }
     list.appendChild(li);
   });
-  const correctCount = game.results.filter(r => r.correct).length;
-  DOM['score-total'].textContent = `Skóre: ${correctCount}/${game.results.length}`;
+  DOM['score-total'].textContent = `Skóre: ${game.correctCount}/${game.results.length}`;
 }
 
 export function showCurrentQuestion(game) {
-  const airport = game.roundAirports[game.currentRound];
+  const airport = game.currentTarget;
   DOM['round-counter'].textContent = `Kolo ${game.currentRound + 1}/${game.roundAirports.length}`;
   DOM['question-text'].innerHTML = game.hardMode
     ? `Najdi: <span class="icao">${airport.icao}</span>`
@@ -83,8 +81,7 @@ export function showFeedback(game, targetAirport, correct, clickedAirport, onDon
 
 export function showSummary(game) {
   DOM['question-bar'].classList.add('hidden');
-  const correctCount = game.results.filter(r => r.correct).length;
-  DOM['final-score'].textContent = `${correctCount} / ${game.roundAirports.length}`;
+  DOM['final-score'].textContent = `${game.correctCount} / ${game.roundAirports.length}`;
   const list = DOM['summary-list'];
   list.innerHTML = '';
   game.results.forEach((r, i) => {
@@ -119,13 +116,13 @@ export function wireListeners(game, airportData) {
       if (dx * dx + dy * dy > 25) return;
     }
     const svgPt = screenToSVG(DOM['map'], e.clientX, e.clientY);
-    const targetAirport = game.roundAirports[game.currentRound];
+    const targetAirport = game.currentTarget;
     const clickedAirport = findClickedAirport(svgPt.x, svgPt.y, game.currentPool, targetAirport);
     if (!clickedAirport) return;
-    const correct = recordGuess(game, targetAirport, clickedAirport);
+    const correct = game.recordGuess(targetAirport, clickedAirport);
     renderScoreSheet(game);
     showFeedback(game, targetAirport, correct, clickedAirport, () => {
-      advanceRound(game);
+      game.advance();
       if (game.state === 'summary') {
         showSummary(game);
       } else {
@@ -145,7 +142,7 @@ export function wireListeners(game, airportData) {
     };
     saveSettings({ categories: checked, browse: opts.browseMode, hard: opts.hardMode, infinity: opts.infinityMode });
     const pool = airportData.filter(a => checked.includes(a.type));
-    startGame(game, pool, opts);
+    game.start(pool, opts);
     renderAirports(DOM['airport-layer'], pool, opts.browseMode);
     DOM['start-screen'].classList.add('hidden');
     DOM['summary-screen'].classList.add('hidden');
@@ -165,8 +162,7 @@ export function wireListeners(game, airportData) {
     e.preventDefault();
     if (confirm('Smazat veškerý postup učení?')) {
       clearWeights();
-      game.weights = {};
-      game.seen = new Set();
+      game.resetProgress();
     }
   });
 
@@ -180,7 +176,7 @@ export function wireListeners(game, airportData) {
   DOM['practice-missed'].addEventListener('click', () => {
     DOM['summary-screen'].classList.add('hidden');
     DOM['question-bar'].classList.remove('hidden');
-    startPracticeMissed(game);
+    game.startPracticeMissed();
     renderScoreSheet(game);
     showCurrentQuestion(game);
   });
