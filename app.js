@@ -72,93 +72,10 @@ async function loadJSON(url) {
   return res.json();
 }
 
-// --- Zoom & Pan ---
-
-const DEFAULT_VIEWBOX = { x: 0, y: 0, w: SVG_WIDTH, h: SVG_HEIGHT };
-let viewBox = { ...DEFAULT_VIEWBOX };
-let isPanning = false;
-let panStart = { x: 0, y: 0 };
-let pinchStartDist = 0;
-let pinchStartVB = null;
-
-function applyViewBox() {
-  const svg = DOM['map'];
-  svg.setAttribute('viewBox', `${viewBox.x} ${viewBox.y} ${viewBox.w} ${viewBox.h}`);
-  const zoomed = viewBox.w < SVG_WIDTH - 1;
-  DOM['reset-zoom'].style.display = zoomed ? 'block' : 'none';
-}
-
-function resetZoom() {
-  viewBox = { ...DEFAULT_VIEWBOX };
-  applyViewBox();
-}
-
-function zoomAt(cx, cy, factor) {
-  const newW = Math.max(100, Math.min(SVG_WIDTH, viewBox.w * factor));
-  const newH = Math.max(62.5, Math.min(SVG_HEIGHT, newW * SVG_HEIGHT / SVG_WIDTH));
-  const scale = newW / viewBox.w;
-  viewBox.x = cx - (cx - viewBox.x) * scale;
-  viewBox.y = cy - (cy - viewBox.y) * scale;
-  viewBox.w = newW;
-  viewBox.h = newH;
-  applyViewBox();
-}
-
 function screenToSVG(clientX, clientY) {
   const svg = DOM['map'];
   const pt = new DOMPoint(clientX, clientY);
   return pt.matrixTransform(svg.getScreenCTM().inverse());
-}
-
-function initZoomPan() {
-  const svg = DOM['map'];
-
-  // Touch pinch zoom + pan
-  svg.addEventListener('touchstart', (e) => {
-    if (e.touches.length === 2) {
-      e.preventDefault();
-      const dx = e.touches[0].clientX - e.touches[1].clientX;
-      const dy = e.touches[0].clientY - e.touches[1].clientY;
-      pinchStartDist = Math.sqrt(dx * dx + dy * dy);
-      pinchStartVB = { ...viewBox };
-    } else if (e.touches.length === 1 && viewBox.w < SVG_WIDTH - 1) {
-      isPanning = true;
-      panStart = screenToSVG(e.touches[0].clientX, e.touches[0].clientY);
-    }
-  }, { passive: false });
-
-  svg.addEventListener('touchmove', (e) => {
-    if (e.touches.length === 2 && pinchStartDist) {
-      e.preventDefault();
-      const dx = e.touches[0].clientX - e.touches[1].clientX;
-      const dy = e.touches[0].clientY - e.touches[1].clientY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      const scale = pinchStartDist / dist;
-      const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-      const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-      const center = screenToSVG(cx, cy);
-      const newW = Math.max(100, Math.min(SVG_WIDTH, pinchStartVB.w * scale));
-      const newH = newW * SVG_HEIGHT / SVG_WIDTH;
-      viewBox.w = newW;
-      viewBox.h = newH;
-      viewBox.x = center.x - newW / 2;
-      viewBox.y = center.y - newH / 2;
-      applyViewBox();
-    } else if (e.touches.length === 1 && isPanning) {
-      const pt = screenToSVG(e.touches[0].clientX, e.touches[0].clientY);
-      viewBox.x -= pt.x - panStart.x;
-      viewBox.y -= pt.y - panStart.y;
-      applyViewBox();
-    }
-  }, { passive: false });
-
-  svg.addEventListener('touchend', () => {
-    isPanning = false;
-    pinchStartDist = 0;
-    pinchStartVB = null;
-  });
-
-  DOM['reset-zoom'].addEventListener('click', resetZoom);
 }
 
 function nmToPixels(nm) {
@@ -382,11 +299,14 @@ function isClickOnAirport(clickX, clickY, airport) {
   return distSq <= clickR * clickR;
 }
 
-function findClickedAirport(clickX, clickY, airports, targetType) {
+function findClickedAirport(clickX, clickY, airports, targetAirport) {
   const matches = airports.filter(a => isClickOnAirport(clickX, clickY, a));
   if (matches.length <= 1) return matches[0] || null;
+  // If the target is among the overlapping matches, the user hit it — count that
+  const targetMatch = matches.find(a => a.icao === targetAirport.icao);
+  if (targetMatch) return targetMatch;
   // Prefer same type as target (be generous when overlapping)
-  const sameType = matches.filter(a => a.type === targetType);
+  const sameType = matches.filter(a => a.type === targetAirport.type);
   if (sameType.length === 1) return sameType[0];
   // Otherwise prefer non-CTR over CTR, then smallest CTR
   const pool = sameType.length > 0 ? sameType : matches;
@@ -615,7 +535,7 @@ function handleMapClick(e) {
   const svgPt = screenToSVG(e.clientX, e.clientY);
 
   const targetAirport = roundAirports[currentRound];
-  const clickedAirport = findClickedAirport(svgPt.x, svgPt.y, currentPool, targetAirport.type);
+  const clickedAirport = findClickedAirport(svgPt.x, svgPt.y, currentPool, targetAirport);
 
   if (!clickedAirport) return; // ignore clicks outside any shape
 
@@ -694,7 +614,7 @@ async function init() {
    'sidebar', 'sidebar-toggle', 'score-list', 'score-total',
    'start-screen', 'summary-screen', 'final-score', 'summary-list',
    'practice-missed', 'play-again', 'start-btn', 'reset-progress',
-   'reset-zoom', 'easter-egg', 'browse-mode', 'hard-mode', 'infinity-mode'
+   'easter-egg', 'browse-mode', 'hard-mode', 'infinity-mode'
   ].forEach(id => { DOM[id] = document.getElementById(id); });
 
   try {
@@ -731,7 +651,6 @@ async function init() {
 
   DOM['map'].addEventListener('mousedown', handleMapMouseDown);
   DOM['map'].addEventListener('click', handleMapClick);
-  initZoomPan();
 
   DOM['play-again'].addEventListener('click', () => {
     DOM['summary-screen'].classList.add('hidden');
