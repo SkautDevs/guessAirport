@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { pointInPolygon, isClickOnAirport, findClickedAirport } from '../src/hit.js';
-import { lonLatToXY, enrichAirports } from '../src/projection.js';
+import { enrichAirports } from '../src/projection.js';
 
 function fixtureAirport(icao, lon, lat, type = 'small-north') {
   const a = { icao, lon, lat, type, runways: [] };
