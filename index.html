@@ -11,7 +11,7 @@
     <!-- Question bar -->
     <div id="question-bar" class="hidden">
       <span id="round-counter"></span>
-      <span id="question-text"></span>
+      <span id="question-text" aria-live="polite"></span>
     </div>
 
     <!-- Game body: map + sidebar -->
@@ -25,7 +25,7 @@
       </div>
 
       <!-- Score sidebar -->
-      <button id="sidebar-toggle">Skóre ▶</button>
+      <button id="sidebar-toggle" aria-expanded="false" aria-controls="sidebar">Skóre ▶</button>
       <div id="sidebar" class="hidden">
         <h2>Výsledky</h2>
         <ul id="score-list"></ul>

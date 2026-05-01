@@ -160,8 +160,9 @@ export function wireListeners(game, airportData) {
   DOM['sidebar-toggle'].addEventListener('click', () => {
     DOM['sidebar'].classList.toggle('expanded');
     const toggle = DOM['sidebar-toggle'];
-    toggle.classList.toggle('active');
-    toggle.textContent = toggle.classList.contains('active') ? '◀ Skóre' : 'Skóre ▶';
+    const expanded = toggle.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', String(expanded));
+    toggle.textContent = expanded ? '◀ Skóre' : 'Skóre ▶';
   });
 
   DOM['practice-missed'].addEventListener('click', () => {
