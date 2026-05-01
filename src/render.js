@@ -16,7 +16,7 @@ function ctrToSVGPoints(airport) {
 }
 
 export function renderBorder(layer, borderCoords) {
-  for (let lat = 49; lat <= 51; lat++) {
+  for (let lat = Math.ceil(CZ_BOUNDS.minLat); lat <= Math.floor(CZ_BOUNDS.maxLat); lat++) {
     const left = lonLatToXY(CZ_BOUNDS.minLon, lat);
     const right = lonLatToXY(CZ_BOUNDS.maxLon, lat);
     layer.appendChild(svgEl('line', {
@@ -24,7 +24,7 @@ export function renderBorder(layer, borderCoords) {
       stroke: COLORS.grid, 'stroke-width': STROKE.grid, 'stroke-dasharray': '4,4'
     }));
   }
-  for (let lon = 13; lon <= 18; lon++) {
+  for (let lon = Math.ceil(CZ_BOUNDS.minLon); lon <= Math.floor(CZ_BOUNDS.maxLon); lon++) {
     const top = lonLatToXY(lon, CZ_BOUNDS.maxLat);
     const bottom = lonLatToXY(lon, CZ_BOUNDS.minLat);
     layer.appendChild(svgEl('line', {
