@@ -1,9 +1,7 @@
 import { weightedPick, shuffleArray, updateWeight } from './weights.js';
 import { saveWeights } from './storage.js';
 
-export const ROUNDS_PER_GAME = 10;
-
-const STATES = ['start', 'playing', 'feedback', 'summary'];
+const ROUNDS_PER_GAME = 10;
 
 export class Game {
   constructor(weights, seen) {
@@ -70,5 +68,3 @@ export class Game {
     return this.results.filter(r => r.correct).length;
   }
 }
-
-export { STATES };

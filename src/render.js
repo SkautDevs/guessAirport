@@ -3,7 +3,7 @@ import { COLORS, STROKE, typeOf } from './types.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 
-export function svgEl(tag, attrs) {
+function svgEl(tag, attrs) {
   const el = document.createElementNS(SVG_NS, tag);
   for (const [k, v] of Object.entries(attrs)) {
     el.setAttribute(k, v);
