@@ -31,11 +31,12 @@ export class Game {
     this.state = 'playing';
   }
 
-  recordGuess(targetAirport, clickedAirport) {
+  recordGuess(clickedAirport) {
     if (this.state !== 'playing') return null;
-    const correct = clickedAirport.icao === targetAirport.icao;
-    this.results.push({ airport: targetAirport, correct });
-    updateWeight(this.weights, this.seen, targetAirport.icao, correct);
+    const target = this.currentTarget;
+    const correct = clickedAirport.icao === target.icao;
+    this.results.push({ airport: target, correct });
+    updateWeight(this.weights, this.seen, target.icao, correct);
     saveWeights(this.weights, this.seen);
     this.state = 'feedback';
     return correct;

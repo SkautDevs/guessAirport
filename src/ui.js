@@ -60,19 +60,20 @@ export function showEasterEgg(airport) {
   setTimeout(() => egg.classList.add('hidden'), 4000);
 }
 
-export function showFeedback(game, targetAirport, correct, clickedAirport, onDone) {
+export function showFeedback(game, clickedAirport, onDone) {
+  const { airport: target, correct } = game.results.at(-1);
   const feedbackLayer = DOM['feedback-layer'];
   feedbackLayer.innerHTML = '';
   if (correct) {
-    if (targetAirport.icao === HOME_ICAO) showEasterEgg(targetAirport);
-    highlightAirport(feedbackLayer, targetAirport, COLORS.correct, 3);
+    if (target.icao === HOME_ICAO) showEasterEgg(target);
+    highlightAirport(feedbackLayer, target, COLORS.correct, 3);
   } else {
     if (clickedAirport) {
       highlightAirport(feedbackLayer, clickedAirport, COLORS.wrong, 2);
       labelAirport(feedbackLayer, clickedAirport, COLORS.wrong);
     }
-    highlightAirport(feedbackLayer, targetAirport, COLORS.correct, 3);
-    labelAirport(feedbackLayer, targetAirport, COLORS.correct);
+    highlightAirport(feedbackLayer, target, COLORS.correct, 3);
+    labelAirport(feedbackLayer, target, COLORS.correct);
   }
   const delay = correct ? FEEDBACK_DELAY_MS / 2 : FEEDBACK_DELAY_MS;
   setTimeout(() => {
@@ -107,12 +108,11 @@ export function wireListeners(game, airportData) {
   DOM['map'].addEventListener('click', (e) => {
     if (game.state !== 'playing') return;
     const svgPt = screenToSVG(DOM['map'], e.clientX, e.clientY);
-    const targetAirport = game.currentTarget;
-    const clickedAirport = findClickedAirport(svgPt.x, svgPt.y, game.currentPool, targetAirport);
+    const clickedAirport = findClickedAirport(svgPt.x, svgPt.y, game.currentPool, game.currentTarget);
     if (!clickedAirport) return;
-    const correct = game.recordGuess(targetAirport, clickedAirport);
+    game.recordGuess(clickedAirport);
     renderScoreSheet(game);
-    showFeedback(game, targetAirport, correct, clickedAirport, () => {
+    showFeedback(game, clickedAirport, () => {
       game.advance();
       if (game.state === 'summary') {
         showSummary(game);
