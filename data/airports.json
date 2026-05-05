@@ -3560,7 +3560,7 @@
   },
   {
     "icao": "LKP1",
-    "name": "Pražský hrad (GND–4000ft)",
+    "name": "Pražský hrad (GND–4000ft QNH)",
     "lat": 50.09098,
     "lon": 14.40153,
     "type": "prohibited",
@@ -3598,7 +3598,7 @@
   },
   {
     "icao": "LKP2",
-    "name": "Temelín (GND–5000ft)",
+    "name": "Temelín (GND–5000ft QNH)",
     "lat": 49.18028,
     "lon": 14.37556,
     "type": "prohibited",
@@ -3660,7 +3660,7 @@
   },
   {
     "icao": "LKP4",
-    "name": "Vlašim (GND–5000ft)",
+    "name": "Vlašim (GND–5000ft QNH)",
     "lat": 49.68403,
     "lon": 14.93264,
     "type": "prohibited",
@@ -3686,7 +3686,7 @@
   },
   {
     "icao": "LKP5",
-    "name": "Prčice (GND–5000ft)",
+    "name": "Prčice (GND–5000ft QNH)",
     "lat": 49.59278,
     "lon": 14.52333,
     "type": "prohibited",
@@ -3748,7 +3748,7 @@
   },
   {
     "icao": "LKP6",
-    "name": "Semtín (GND–3000ft)",
+    "name": "Semtín (GND–3000ft QNH)",
     "lat": 50.06806,
     "lon": 15.71167,
     "type": "prohibited",
@@ -3810,7 +3810,7 @@
   },
   {
     "icao": "LKP7",
-    "name": "Polička (GND–5000ft)",
+    "name": "Polička (GND–5000ft QNH)",
     "lat": 49.67944,
     "lon": 16.27778,
     "type": "prohibited",
@@ -3872,7 +3872,7 @@
   },
   {
     "icao": "LKP8",
-    "name": "Most (GND–4000ft)",
+    "name": "Most (GND–4000ft QNH)",
     "lat": 50.56333,
     "lon": 13.60333,
     "type": "prohibited",
@@ -3934,7 +3934,7 @@
   },
   {
     "icao": "LKP9",
-    "name": "Dukovany (GND–5000ft)",
+    "name": "Dukovany (GND–5000ft QNH)",
     "lat": 49.08583,
     "lon": 16.14583,
     "type": "prohibited",
@@ -3996,7 +3996,7 @@
   },
   {
     "icao": "LKP10",
-    "name": "Ústí nad Labem (GND–4000ft)",
+    "name": "Ústí nad Labem (GND–4000ft QNH)",
     "lat": 50.65639,
     "lon": 14.02028,
     "type": "prohibited",
@@ -4058,7 +4058,7 @@
   },
   {
     "icao": "LKP11",
-    "name": "Neratovice (GND–2000ft)",
+    "name": "Neratovice (GND–2000ft QNH)",
     "lat": 50.275,
     "lon": 14.51944,
     "type": "prohibited",
@@ -4120,7 +4120,7 @@
   },
   {
     "icao": "LKP12",
-    "name": "Řež (GND–2000ft)",
+    "name": "Řež (GND–2000ft QNH)",
     "lat": 50.17917,
     "lon": 14.36361,
     "type": "prohibited",
@@ -4182,7 +4182,7 @@
   },
   {
     "icao": "LKR9",
-    "name": "Praha (GND–5000ft)",
+    "name": "Praha (GND–5000ft QNH)",
     "lat": 50.08306,
     "lon": 14.43528,
     "type": "restricted",
@@ -4686,7 +4686,7 @@
   },
   {
     "icao": "LKTRA10",
-    "name": "Pohořelice (GND–3000ft)",
+    "name": "Pohořelice (GND–3000ft QNH)",
     "lat": 48.99125,
     "lon": 16.43445,
     "type": "tra",
@@ -4716,7 +4716,7 @@
   },
   {
     "icao": "LKTRA11",
-    "name": "Miroslav (3000ft–FL125)",
+    "name": "Miroslav (3000ft QNH–FL125)",
     "lat": 48.91403,
     "lon": 16.31833,
     "type": "tra",
@@ -4898,7 +4898,7 @@
   },
   {
     "icao": "LKTRA16",
-    "name": "Třešť (5000ft–FL125)",
+    "name": "Třešť (5000ft QNH–FL125)",
     "lat": 49.33153,
     "lon": 15.57055,
     "type": "tra",
@@ -4928,7 +4928,7 @@
   },
   {
     "icao": "LKTRA17",
-    "name": "Okříšky (GND–3500ft)",
+    "name": "Okříšky (GND–3500ft QNH)",
     "lat": 49.25445,
     "lon": 15.81167,
     "type": "tra",
@@ -5000,7 +5000,7 @@
   },
   {
     "icao": "LKTRA32",
-    "name": "Proseč (5000ft–FL245)",
+    "name": "Proseč (5000ft QNH–FL245)",
     "lat": 49.76014,
     "lon": 16.14764,
     "type": "tra",
@@ -5038,7 +5038,7 @@
   },
   {
     "icao": "LKTRA33",
-    "name": "Letovice (5000ft–FL245)",
+    "name": "Letovice (5000ft QNH–FL245)",
     "lat": 49.57014,
     "lon": 16.41236,
     "type": "tra",
@@ -5076,7 +5076,7 @@
   },
   {
     "icao": "LKTRA34",
-    "name": "Mohelnice (5000ft–FL245)",
+    "name": "Mohelnice (5000ft QNH–FL245)",
     "lat": 49.72125,
     "lon": 17.01959,
     "type": "tra",
@@ -5156,7 +5156,7 @@
   },
   {
     "icao": "LKTRA57",
-    "name": "Vamberk (3000ft–FL125)",
+    "name": "Vamberk (3000ft QNH–FL125)",
     "lat": 50.19292,
     "lon": 16.14778,
     "type": "tra",
@@ -5182,7 +5182,7 @@
   },
   {
     "icao": "LKTRA61",
-    "name": "Kopidlno (GND–3000ft)",
+    "name": "Kopidlno (GND–3000ft QNH)",
     "lat": 50.31417,
     "lon": 15.15944,
     "type": "tra",
@@ -5244,7 +5244,7 @@
   },
   {
     "icao": "LKTRA62",
-    "name": "Nymburk (3000ft–FL245)",
+    "name": "Nymburk (3000ft QNH–FL245)",
     "lat": 50.09583,
     "lon": 14.26556,
     "type": "tra",
@@ -5320,7 +5320,7 @@
   },
   {
     "icao": "LKTRA72",
-    "name": "Opočno (GND–3000ft)",
+    "name": "Opočno (GND–3000ft QNH)",
     "lat": 50.21708,
     "lon": 16.14167,
     "type": "tra",
@@ -5350,7 +5350,7 @@
   },
   {
     "icao": "LKTRA73",
-    "name": "Borohrádek (GND–2500ft)",
+    "name": "Borohrádek (GND–2500ft QNH)",
     "lat": 50.06139,
     "lon": 16.18223,
     "type": "tra",
@@ -5528,7 +5528,7 @@
   },
   {
     "icao": "LKTRA93",
-    "name": "Přerov (4000ft–FL75)",
+    "name": "Přerov (4000ft QNH–FL75)",
     "lat": 49.42583,
     "lon": 17.40472,
     "type": "tra",
@@ -5590,7 +5590,7 @@
   },
   {
     "icao": "LKTRA94",
-    "name": "Pivín (3500ft–FL95)",
+    "name": "Pivín (3500ft QNH–FL95)",
     "lat": 49.44778,
     "lon": 17.13389,
     "type": "tra",
@@ -5624,7 +5624,7 @@
   },
   {
     "icao": "LKTRA95",
-    "name": "Práslavice (3500ft–FL125)",
+    "name": "Práslavice (3500ft QNH–FL125)",
     "lat": 49.42583,
     "lon": 17.40472,
     "type": "tra",
