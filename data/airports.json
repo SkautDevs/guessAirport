@@ -3560,7 +3560,7 @@
   },
   {
     "icao": "LKP1",
-    "name": "Pražský hrad",
+    "name": "Pražský hrad (GND–4000ft)",
     "lat": 50.09098,
     "lon": 14.40153,
     "type": "prohibited",
@@ -3598,7 +3598,7 @@
   },
   {
     "icao": "LKP2",
-    "name": "Temelín",
+    "name": "Temelín (GND–5000ft)",
     "lat": 49.18028,
     "lon": 14.37556,
     "type": "prohibited",
@@ -3660,7 +3660,7 @@
   },
   {
     "icao": "LKP4",
-    "name": "Vlašim",
+    "name": "Vlašim (GND–5000ft)",
     "lat": 49.68403,
     "lon": 14.93264,
     "type": "prohibited",
@@ -3686,7 +3686,7 @@
   },
   {
     "icao": "LKP5",
-    "name": "Prčice",
+    "name": "Prčice (GND–5000ft)",
     "lat": 49.59278,
     "lon": 14.52333,
     "type": "prohibited",
@@ -3748,7 +3748,7 @@
   },
   {
     "icao": "LKP6",
-    "name": "Semtín",
+    "name": "Semtín (GND–3000ft)",
     "lat": 50.06806,
     "lon": 15.71167,
     "type": "prohibited",
@@ -3810,7 +3810,7 @@
   },
   {
     "icao": "LKP7",
-    "name": "Polička",
+    "name": "Polička (GND–5000ft)",
     "lat": 49.67944,
     "lon": 16.27778,
     "type": "prohibited",
@@ -3872,7 +3872,7 @@
   },
   {
     "icao": "LKP8",
-    "name": "Most",
+    "name": "Most (GND–4000ft)",
     "lat": 50.56333,
     "lon": 13.60333,
     "type": "prohibited",
@@ -3934,7 +3934,7 @@
   },
   {
     "icao": "LKP9",
-    "name": "Dukovany",
+    "name": "Dukovany (GND–5000ft)",
     "lat": 49.08583,
     "lon": 16.14583,
     "type": "prohibited",
@@ -3996,7 +3996,7 @@
   },
   {
     "icao": "LKP10",
-    "name": "Ústí nad Labem",
+    "name": "Ústí nad Labem (GND–4000ft)",
     "lat": 50.65639,
     "lon": 14.02028,
     "type": "prohibited",
@@ -4058,7 +4058,7 @@
   },
   {
     "icao": "LKP11",
-    "name": "Neratovice",
+    "name": "Neratovice (GND–2000ft)",
     "lat": 50.275,
     "lon": 14.51944,
     "type": "prohibited",
@@ -4120,7 +4120,7 @@
   },
   {
     "icao": "LKP12",
-    "name": "Řež",
+    "name": "Řež (GND–2000ft)",
     "lat": 50.17917,
     "lon": 14.36361,
     "type": "prohibited",
@@ -4182,7 +4182,7 @@
   },
   {
     "icao": "LKR9",
-    "name": "Praha",
+    "name": "Praha (GND–5000ft)",
     "lat": 50.08306,
     "lon": 14.43528,
     "type": "restricted",
@@ -4244,7 +4244,7 @@
   },
   {
     "icao": "LKR1",
-    "name": "Šumava",
+    "name": "Šumava (GND–1000ft AGL)",
     "lat": 48.9557,
     "lon": 13.63028,
     "type": "restricted",
@@ -4318,7 +4318,7 @@
   },
   {
     "icao": "LKR2",
-    "name": "České Švýcarsko",
+    "name": "České Švýcarsko (GND–1000ft AGL)",
     "lat": 50.88362,
     "lon": 14.34417,
     "type": "restricted",
@@ -4384,7 +4384,7 @@
   },
   {
     "icao": "LKR3",
-    "name": "Krkonoše",
+    "name": "Krkonoše (GND–1000ft AGL)",
     "lat": 50.71875,
     "lon": 15.6582,
     "type": "restricted",
@@ -4458,7 +4458,7 @@
   },
   {
     "icao": "LKR4",
-    "name": "Podyjí",
+    "name": "Podyjí (GND–1000ft AGL)",
     "lat": 48.85334,
     "lon": 15.91055,
     "type": "restricted",
