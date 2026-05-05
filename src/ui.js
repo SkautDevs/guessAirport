@@ -35,7 +35,7 @@ export function renderScoreSheet(game) {
     }
     list.appendChild(li);
   });
-  DOM['score-total'].textContent = `Skóre: ${game.correctCount}/${game.results.length}`;
+  DOM['score-total'].textContent = `Skóre: ${game.correctCount}/${game.roundAirports.length}`;
 }
 
 export function showCurrentQuestion(game) {
