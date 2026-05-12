@@ -127,12 +127,13 @@ export function renderAirports(layer, airports, browseMode) {
     } else {
       const isCTR = t.shape === 'ctr' && airport.ctrPoints;
       const isUL = airport.type === 'ultralight';
+      const isAirportCTR = isCTR && (airport.type === 'large' || airport.type === 'medium');
       drawShape(g, airport, {
         fill: isCTR ? t.color : 'none',
         stroke: isCTR ? t.color : COLORS.airport,
         strokeWidth: isCTR ? STROKE.ctr : (isUL ? STROKE.circleUL : STROKE.circle),
         fillOp: isCTR ? (t.fillOp ?? 0.06) : undefined,
-        strokeDash: isCTR ? '6,3' : undefined,
+        strokeDash: isAirportCTR ? '6,3' : undefined,
       });
     }
     if (airport.runways.length > 0) renderRunways(g, airport);
